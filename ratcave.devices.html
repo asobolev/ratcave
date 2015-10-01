@@ -1,0 +1,399 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ratcave.devices &mdash; ratCAVE 0.5.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ratCAVE 0.5.0 documentation" href="index.html"/>
+        <link rel="up" title="API Documentation" href="ratcave.html"/>
+        <link rel="next" title="ratcave.graphics" href="ratcave.graphics.html"/>
+        <link rel="prev" title="API Documentation" href="ratcave.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> ratCAVE
+        
+
+        
+          
+          <img src="_static/ratcave_example.png" class="logo" />
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial1.html">Tutorial 1: Displaying a 3D Object</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial1.html#reading-a-wavefront-obj-file">Reading a Wavefront .obj file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial1.html#creating-a-mesh-from-the-wavefrontreader-and-positioning-it">Creating a Mesh from the WavefrontReader and Positioning it</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial1.html#creating-a-scene">Creating a Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial1.html#creating-a-window-and-rendering-the-scene">Creating a Window and Rendering the Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial1.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial2.html">Tutorial 2: Animating a Scene with Multiple Meshes, and using Multiple Scenes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial2.html#scenes-hold-lists-of-meshes">Scenes Hold Lists of Meshes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial2.html#moving-a-mesh">Moving a Mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial2.html#modifying-scene-s-background-color">Modifying Scene&#8217;s Background Color</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial2.html#changing-the-active-scene">Changing the Active Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial2.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial3.html">Tutorial 3: Using Cubemapping to Render a CAVE VR System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#create-the-virtual-scene">Create the Virtual Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#create-the-projected-scene">Create the Projected Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#put-the-scenes-into-a-window">Put the Scenes into a Window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#tracking-the-subject-player">Tracking The Subject / Player</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#display-loop">Display Loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#setting-your-virtual-meshes-in-arena-coordinates">Setting your virtual meshes in Arena-Coordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#getting-rotation-invariant-tracking-coordinates">Getting Rotation-Invariant Tracking Coordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="ratcave.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">ratcave.devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ratcave.graphics.html">ratcave.graphics</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ratCAVE</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="ratcave.html">API Documentation</a> &raquo;</li>
+      
+    <li>ratcave.devices</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/ratcave.devices.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="ratcave-devices">
+<h1>ratcave.devices<a class="headerlink" href="#ratcave-devices" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-ratcave.devices"></span><dl class="class">
+<dt id="ratcave.devices.Optitrack">
+<em class="property">class </em><code class="descclassname">ratcave.devices.</code><code class="descname">Optitrack</code><span class="sig-paren">(</span><em>client_ip='127.0.0.1'</em>, <em>data_port=1511</em>, <em>comm_port=1510</em>, <em>read_rate=400</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.devices.Optitrack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>The Optitrack NatNet Interface.  When initialized, starts a background thread that automatically updates data.</p>
+<p>The Optitrack object is the main object for acquiring 3D marker data from the Motive NatNet Streaming.  It uses their depaketezation example to parse the data packet, and it does so in a background thread.  <a class="reference internal" href="#ratcave.devices.NatDataSocket" title="ratcave.devices.NatDataSocket"><code class="xref py py-class docutils literal"><span class="pre">NatDataSocket</span></code></a> and <a class="reference internal" href="#ratcave.devices.NatCommSocket" title="ratcave.devices.NatCommSocket"><code class="xref py py-class docutils literal"><span class="pre">NatCommSocket</span></code></a> are automatically created and wrapped by the Optitrack object, and several other convenence functions have been added.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>client_ip</strong> (<em>str</em>) &#8211; The Motive server ip address.  If running on the same PC as Motive, both IP settings should be set to &#8216;Local Loopback&#8217;, which is &#8216;127.0.0.1&#8217;.</li>
+<li><strong>data_port</strong> (<em>int</em>) &#8211; The NatNet Data Socket port number.  Should match the settings in the Streaming pane in Motive.</li>
+<li><strong>comm_port</strong> (<em>int</em>) &#8211; The NatNet Command Socket port number.  Should match the settings in the Streaming pane in Motive.</li>
+<li><strong>read_rate</strong> (<em>int</em>) &#8211; How often the thread should loop, in frames per second.  Should be set faster than the camera framerate, or the data acquired will be laggy as the buffer fills.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ratcave.devices.Optitrack.get_data">
+<code class="descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.devices.Optitrack.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update Position data with NatPacket containing Frame data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.devices.Optitrack.get_model">
+<code class="descname">get_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.devices.Optitrack.get_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ratcave.devices.Optitrack.is_recording">
+<code class="descname">is_recording</code><a class="headerlink" href="#ratcave.devices.Optitrack.is_recording" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ratcave.devices.Optitrack.ping">
+<code class="descname">ping</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.devices.Optitrack.ping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends initial Ping command to Motive to begin receiving data and alert Motive to our presence.
+Returns tuple: (server_name, Version, NatNetVersion)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.devices.Optitrack.set_take_file_name">
+<code class="descname">set_take_file_name</code><span class="sig-paren">(</span><em>file_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.devices.Optitrack.set_take_file_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ratcave.devices.Optitrack.start_recording">
+<code class="descname">start_recording</code><span class="sig-paren">(</span><em>n_attempts=3</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.devices.Optitrack.start_recording" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends the &#8216;StartRecording&#8217; command over the NatNet Command Port to Motive.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>n_attempts</strong> (<em>int</em>) &#8211; How many times to attempt before raising a RunTimeError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.devices.Optitrack.stop_recording">
+<code class="descname">stop_recording</code><span class="sig-paren">(</span><em>n_attempts=3</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.devices.Optitrack.stop_recording" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends the &#8216;StopRecording&#8217; command over the NatNet Command Port to Motive.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This method isn&#8217;t working at the moment, for reasons not yet uncovered.  Still, will raise an error if unsuccessful, so this method is safe to test on your system.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>n_attempts</strong> (<em>int</em>) &#8211; Number of times to attempt before raising a RunTimeError.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">RuntimeError</span></code> &#8211; If recording is already stopped when called, or if fails to stop after being called.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ratcave.devices.Optitrack.timestamp_recording">
+<code class="descname">timestamp_recording</code><a class="headerlink" href="#ratcave.devices.Optitrack.timestamp_recording" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ratcave.devices.Optitrack.wait_for_recording_start">
+<code class="descname">wait_for_recording_start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.devices.Optitrack.wait_for_recording_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Halts script until recording begins.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.devices.Optitrack.wait_for_recording_stop">
+<code class="descname">wait_for_recording_stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.devices.Optitrack.wait_for_recording_stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Halts script until recording ends.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ratcave.devices.NatDataSocket">
+<em class="property">class </em><code class="descclassname">ratcave.devices.</code><code class="descname">NatDataSocket</code><span class="sig-paren">(</span><em>client_ip='127.0.0.1'</em>, <em>port=1511</em>, <em>max_packet_size=100000</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.devices.NatDataSocket" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ratcave.devices.trackers.optitrack.NatSocket</span></code></p>
+<p>Internet Protocol socket with presets for Motive Data Socket.</p>
+<dl class="method">
+<dt id="ratcave.devices.NatDataSocket.recv">
+<code class="descname">recv</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.devices.NatDataSocket.recv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receives packet from NatNet Server and returns as NatPacket instance.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ratcave.devices.NatCommSocket">
+<em class="property">class </em><code class="descclassname">ratcave.devices.</code><code class="descname">NatCommSocket</code><span class="sig-paren">(</span><em>client_ip='127.0.0.1'</em>, <em>uPort=1510</em>, <em>max_packet_size=100000</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.devices.NatCommSocket" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ratcave.devices.trackers.optitrack.NatSocket</span></code></p>
+<p>Internet Protocol socket with presets for Motive Command Socket.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>client_ip</strong> (<em>int</em>) &#8211; an int</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ratcave.devices.NatCommSocket.get_data">
+<code class="descname">get_data</code><span class="sig-paren">(</span><em>nat_value</em>, <em>message=''</em>, <em>num_attempts=3</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.devices.NatCommSocket.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combines the send() and recv() functions into a single convenience function for requesting data.
+Does multiple attempts and confirms that received packet is the type that was requested. Returns NatPacket.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.devices.NatCommSocket.recv">
+<code class="descname">recv</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.devices.NatCommSocket.recv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receives packet from NatNet Server and returns as NatPacket instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.devices.NatCommSocket.send">
+<code class="descname">send</code><span class="sig-paren">(</span><em>nat_value</em>, <em>message=''</em>, <em>sleep_time=0.02</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.devices.NatCommSocket.send" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send an integer command to NatNet Server, usually as a request for some packet type on the command socket.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Values Available, along with value to expect in NatPacket.iMessage when receiving the response:
+- 0 = NAT_PING
+- 1 = NAT_PINGRESPONSE
+- 2 = NAT_REQUEST  (must also send a message string.)
+3 = NAT_RESPONSE
+4 = NAT_REQUEST_MODELDEF
+5 = NAT_MODELDEF
+6 = NAT_REQUEST_FRAMEOFDATA
+7 = NAT_FRAMEOFDATA
+8 = NAT_MESSAGESTRIN</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ratcave.devices.USB_TTL">
+<em class="property">class </em><code class="descclassname">ratcave.devices.</code><code class="descname">USB_TTL</code><span class="sig-paren">(</span><em>port=''</em>, <em>baud=9600</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.devices.USB_TTL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Auto-Searches for a connected USB device over the range COM1-COM9, through which ttl pulses can be sent to
+the indicated channel.</p>
+<dl class="method">
+<dt id="ratcave.devices.USB_TTL.send">
+<code class="descname">send</code><span class="sig-paren">(</span><em>channel</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.devices.USB_TTL.send" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a ttl on the specified channel (integer)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ratcave.graphics.html" class="btn btn-neutral float-right" title="ratcave.graphics" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ratcave.html" class="btn btn-neutral" title="API Documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Nicholas A. Del Grosso.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.5.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
