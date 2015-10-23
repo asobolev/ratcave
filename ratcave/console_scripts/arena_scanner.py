@@ -7,7 +7,6 @@ from sklearn.decomposition import PCA
 from ratcave import graphics
 from ratcave import utils
 from ratcave.graphics.core._transformations import rotation_matrix
-from ratcave.devices import trackers
 
 import motive
 
@@ -318,11 +317,17 @@ if __name__ == '__main__':
     parser.add_argument('-m', action='store_false', dest='mean_center', default=True,
                         help='If this flag is present, the arena will be NOT offset by its mean marker position.')
 
+    parser.add_argument('-l', action='store_false', dest='local_rotate', default=True,
+                        help='If this flag is present, the arena will be NOT rotated along its shape to arena-centered local coordinates.')
+
     parser.add_argument('-r', action='store', dest='rigid_body_name', default='',
                         help='Name of the Arena rigid body. If only one rigid body is present, unnecessary--that one will be used automatically.')
 
     parser.add_argument('-i', action='store', dest='motive_projectfile', default=motive.utils.backup_project_filename,
                         help='Name of the motive project file to load.  If not used, will load most recent Project file loaded in MotivePy.')
+
+
+
 
     args = parser.parse_args()
 
@@ -364,15 +369,19 @@ if __name__ == '__main__':
     # Rotate all points to be mean-centered and aligned to Optitrack Markers direction or largest variance.
     markers = np.array(rigid_bodies[arena_name].point_cloud_markers)
     points = points - np.mean(markers, axis=0) if args.mean_center else points
-    points = np.dot(points,  rotation_matrix(np.radians(trackers.utils.rotate_to_var(markers)), [0, 1, 0])[:3, :3]) if args.pca_rotate else points # TODO: RE-ADD PCA Rotation!
+    points = np.dot(points,  rotation_matrix(np.radians(utils.rotate_to_var(markers)), [0, 1, 0])[:3, :3]) if args.pca_rotate else points # TODO: RE-ADD PCA Rotation!
 
+    # Rotate all points again to be aligned along shape of arena (must be recorded in .obj file and compensated for!)
+    local_rotation = utils.rotate_to_var(points) if args.local_rotate else None
+    if local_rotation:
+        points = np.dot(points, rotation_matrix(np.radians(local_rotation), [0, 1, 0])[:3, :3])
 
     # Get vertex positions and normal directions from the collected data.
     vertices, normals = meshify(points, n_surfaces=args.n_sides)
     vertices = {wall: fan_triangulate(reorder_vertices(verts)) for wall, verts in vertices.items()}  # Triangulate
 
     # Write wavefront .obj file to app data directory and user-specified directory for importing into Blender.
-    wave_str = data_to_wavefront(arena_name, vertices, normals)
+    wave_str = data_to_wavefront(arena_name, vertices, normals, add_y_rotation=local_rotation)
 
     # Write to app data directory
     with open(path.join(ratcave.data_dir, 'arena.obj'), 'wb') as wavfile:
