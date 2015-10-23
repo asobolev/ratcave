@@ -20,7 +20,7 @@ def scan(pointwidth=.06):
 
     # Initialize Calibration Point Grid.
     wavefront_reader = graphics.WavefrontReader(ratcave.graphics.resources.obj_primitives)
-    mesh = wavefront_reader.get_mesh('Grid', centered=True, lighting=False, scale=1.5, drawstyle='point', point_size=12, position=(0,0,-1))
+    mesh = wavefront_reader.get_mesh('Grid', centered=True, lighting=False, scale=1.5, drawstyle='point', point_size=18, position=(0,0,-1))
     mesh.material.diffuse.rgb = 1, 1, 1
 
     scene = graphics.Scene([mesh])
@@ -217,10 +217,13 @@ def data_to_wavefront(mesh_name, vert_dict, normal_dict, add_y_rotation=None):
     line in the .obj file."""
 
     # Put header in string
-    wavefront_str = "# Blender v2.69 (sub 5) OBJ File: ''\n" + "# www.blender.org\n" + "o {name}\n".format(name=mesh_name)
+    wavefront_str = "# Blender v2.69 (sub 5) OBJ File: ''\n" + "# www.blender.org\n"
 
     if add_y_rotation:
-        wavefront_str += "# Additional Y Rotation {}".format(add_y_rotation)
+        wavefront_str += "##Additional_Y_Rotation {}\n".format(add_y_rotation)
+
+    # Add Arena name
+    wavefront_str += "o {name}\n".format(name=mesh_name)
 
     # Write Vertex data from vert_dict
     for wall in vert_dict:

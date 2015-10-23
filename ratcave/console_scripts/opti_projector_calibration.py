@@ -25,7 +25,7 @@ def setup_projcal_window():
     # Setup graphics
 
     wavefront_reader = gg.WavefrontReader(ratcave.graphics.resources.obj_primitives)
-    circle = wavefront_reader.get_mesh('Sphere', centered=True, lighting=False, position=[0., 0., -1.], scale=.004)
+    circle = wavefront_reader.get_mesh('Sphere', centered=True, lighting=False, position=[0., 0., -1.], scale=.007)
     circle.material.diffuse.rgb = 1, 1, 1  # Make white
 
     scene = gg.Scene([circle])

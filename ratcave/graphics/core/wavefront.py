@@ -50,7 +50,7 @@ class WavefrontReader(object):
             obj_idx = 0
             list_prefixes = ['#', 'mtllib', 'o', 'v', 'vt', 'vn', 'usemtl', 's', 'f', 'l']  # TODO: Find out what 'l' is for
             single_prefixes = ['mtllib', 'o', 's', 'usemtl',
-                               '# Additional Y Rotation']  # Added for arena rotation
+                               '##Additional_Y_Rotation']  # Added for arena rotation
             props = {pre: [] for pre in list_prefixes}
             s_props = {pre: None for pre in single_prefixes}
             props.update(s_props)
@@ -111,9 +111,9 @@ class WavefrontReader(object):
         norms = normals[face_indices[:, 2]] if np.any(normals) else None
 
         # If a Rotation Y property is there, rotate the verts by that amount.
-        if '# Additional Y Rotation' in props:
-            theta = float(props['# Additional Y Rotation'])
-            rot_mat = rotation_matrix(np.radians(theta), [0, 1, 0])[:3, :3]
+        if props['##Additional_Y_Rotation']:
+            theta = float(props['##Additional_Y_Rotation'])
+            rot_mat = rotation_matrix(-np.radians(theta), [0, 1, 0])[:3, :3]
             verts = np.dot(verts, rot_mat)
 
         # Build MeshData object
