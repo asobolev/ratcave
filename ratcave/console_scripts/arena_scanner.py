@@ -384,12 +384,12 @@ if __name__ == '__main__':
     wave_str = data_to_wavefront(arena_name, vertices, normals, add_y_rotation=local_rotation)
 
     # Write to app data directory
-    with open(path.join(ratcave.data_dir, 'arena.obj'), 'wb') as wavfile:
-        wavfile.write(wave_str)
+    with open(path.join(ratcave.data_dir, 'arena.obj'), 'wb') as wavefile:
+        wavefile.write(wave_str)
     # If specified, optionally also save .obj file to another directory.
     if args.save_filename:
-        with open(args.save_filename, 'wb') as wavfile:
-            wavfile.write(wave_str)
+        with open(args.save_filename, 'wb') as wavefile:
+            wavefile.write(wave_str)
 
     # Show resulting plot with points and model in same place.
     ax = utils.plot_3d(points[::12, :], square_axis=True)
