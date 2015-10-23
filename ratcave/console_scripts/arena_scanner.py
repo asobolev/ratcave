@@ -211,11 +211,17 @@ def fan_triangulate(vertices):
     return np.array([el for (ii, jj) in zip(vertices[1:-1], vertices[2:]) for el in [vertices[0], ii, jj]])
 
 
-def data_to_wavefront(mesh_name, vert_dict, normal_dict):
-    """Returns a wavefront .obj string using pre-triangulated vertex dict and normal dict as reference."""
+def data_to_wavefront(mesh_name, vert_dict, normal_dict, add_y_rotation=None):
+    """Returns a wavefront .obj string using pre-triangulated vertex dict and normal dict as reference.  An additional
+    rotation to be done when reaeding the data can be described by giving an add_y_rotation value, in degrees.
+    Note: add_y_rotation does not rotate the data being put in, it just puts a "Additional Y Rotation: add_y_rotation"
+    line in the .obj file."""
 
     # Put header in string
     wavefront_str = "# Blender v2.69 (sub 5) OBJ File: ''\n" + "# www.blender.org\n" + "o {name}\n".format(name=mesh_name)
+
+    if add_y_rotation:
+        wavefront_str += "# Additional Y Rotation {}".format(add_y_rotation)
 
     # Write Vertex data from vert_dict
     for wall in vert_dict:
@@ -359,6 +365,7 @@ if __name__ == '__main__':
     markers = np.array(rigid_bodies[arena_name].point_cloud_markers)
     points = points - np.mean(markers, axis=0) if args.mean_center else points
     points = np.dot(points,  rotation_matrix(np.radians(trackers.utils.rotate_to_var(markers)), [0, 1, 0])[:3, :3]) if args.pca_rotate else points # TODO: RE-ADD PCA Rotation!
+
 
     # Get vertex positions and normal directions from the collected data.
     vertices, normals = meshify(points, n_surfaces=args.n_sides)
