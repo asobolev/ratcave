@@ -1,9 +1,0 @@
-*.pyc
-*~
-_build
-_static
-_templates_build
-build/*
-dist/*
-ratcave.egg-info/*
-.idea/*
