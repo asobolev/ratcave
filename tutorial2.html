@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial 2: Animating a Scene with Multiple Meshes, and using Multiple Scenes &mdash; ratCAVE 0.5.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.5.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="ratCAVE 0.5.0 documentation" href="index.html" />
+    <link rel="up" title="Tutorials" href="tutorials.html" />
+    <link rel="next" title="Tutorial 3: Using Cubemapping to Render a CAVE VR System" href="tutorial3.html" />
+    <link rel="prev" title="Tutorial 1: Displaying a 3D Object" href="tutorial1.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tutorial-2-animating-a-scene-with-multiple-meshes-and-using-multiple-scenes">
+<h1>Tutorial 2: Animating a Scene with Multiple Meshes, and using Multiple Scenes<a class="headerlink" href="#tutorial-2-animating-a-scene-with-multiple-meshes-and-using-multiple-scenes" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial will build on the previous one by adding some more interesting elements.  We&#8217;ll allow the user to switch between two different <a class="reference internal" href="ratcave.graphics.html#ratcave.graphics.Scene" title="ratcave.graphics.Scene"><tt class="xref py py-class docutils literal"><span class="pre">Scene</span></tt></a> objects by pressing a key, and have multiple meshes in each scene that move.</p>
+<div class="section" id="scenes-hold-lists-of-meshes">
+<h2>Scenes Hold Lists of Meshes<a class="headerlink" href="#scenes-hold-lists-of-meshes" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s insert a couple Meshes from our obj_reader WavefrontReader object into a couple different scenes.  We&#8217;ll even create a second Monkey object and display it as a wireframe.:</p>
+<div class="highlight-python"><div class="highlight"><pre># Create Meshes from WavefrontReader
+monkey = obj_reader.get_mesh(&quot;Monkey&quot;, centered=True, position=(0, 0, -1.5))
+cube = obj_reader.get_mesh(&quot;Cube&quot;, centered=True, position=(1, 0, -1.5), scale=.2)
+torus = obj_reader.get_mesh(&quot;Torus&quot;, centered=True, position=(-1, 0, -1.5), scale=.2)
+wire_monkey = obj_reader.get_mesh(&quot;Monkey&quot;, centered=True, drawstyle=&#39;lines&#39;, position=(0, 0, -2)
+
+# Create Scenes with Meshes.
+scene1 = graphics.Scene([monkey, cube])
+scene2 = graphics.Scene([wire_monkey, torus])
+</pre></div>
+</div>
+</div>
+<div class="section" id="moving-a-mesh">
+<h2>Moving a Mesh<a class="headerlink" href="#moving-a-mesh" title="Permalink to this headline">¶</a></h2>
+<p>Now, we&#8217;ll animate the Meshes by changing their position and rotation attributes. Note that these are found in both the local and world attributes, and it&#8217;s very important to understand which is which.  But for now, let&#8217;s just say that the easiest thing to do is to leave the world position and rotation at (0,0,0) and only modify the local attribute, to get the most intuitive results:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">psychopy</span> <span class="kn">import</span> <span class="n">events</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">window</span> <span class="o">=</span> <span class="n">graphics</span><span class="o">.</span><span class="n">Window</span><span class="p">(</span><span class="n">Scene</span><span class="p">)</span>
+
+<span class="n">theta</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">keys_pressed</span> <span class="o">=</span> <span class="n">events</span><span class="o">.</span><span class="n">getKeys</span><span class="p">()</span>  <span class="c"># getKeys() will empty list each time it returns, so save it to reference it multiple times.</span>
+    <span class="k">if</span> <span class="s">&#39;escape&#39;</span> <span class="ow">in</span> <span class="n">keys_pressed</span><span class="p">:</span>
+        <span class="n">window</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">break</span>
+
+
+    <span class="c"># Animate</span>
+    <span class="n">aa</span> <span class="o">+=</span> <span class="o">.</span><span class="mo">05</span>
+    <span class="n">monkey</span><span class="o">.</span><span class="n">local</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">aa</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span>
+    <span class="n">cube</span><span class="o">.</span><span class="n">local</span><span class="o">.</span><span class="n">rotation</span> <span class="o">=</span> <span class="p">(</span><span class="n">aa</span> <span class="o">*</span> <span class="mi">3</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+
+    <span class="c"># Draw</span>
+    <span class="n">window</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+    <span class="n">window</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="modifying-scene-s-background-color">
+<h2>Modifying Scene&#8217;s Background Color<a class="headerlink" href="#modifying-scene-s-background-color" title="Permalink to this headline">¶</a></h2>
+<p>Scenes also have a background color, saved as an RGB array in the Scene.bgColor attribute:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">scene1</span><span class="o">.</span><span class="n">bgColor</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">scene2</span><span class="o">.</span><span class="n">bgColor</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="changing-the-active-scene">
+<h2>Changing the Active Scene<a class="headerlink" href="#changing-the-active-scene" title="Permalink to this headline">¶</a></h2>
+<p>The Scene being rendered in the Window is found in the Window.active_scene attribute.  To change what is being drawn, simply assign a different Scene object to Window.active_scene:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="s">&#39;left&#39;</span> <span class="ow">in</span> <span class="n">keys_pressed</span><span class="p">:</span>
+   <span class="n">window</span><span class="o">.</span><span class="n">active_scene</span> <span class="o">=</span> <span class="n">scene1</span>
+<span class="k">elif</span> <span class="s">&#39;right&#39;</span> <span class="ow">in</span> <span class="n">keys_pressed</span><span class="p">:</span>
+   <span class="n">window</span><span class="o">.</span><span class="n">active_scene</span> <span class="o">=</span> <span class="n">scene2</span>
+</pre></div>
+</div>
+<p>Let&#8217;s also modify which object is being moved based on the Meshes listed in Scene.meshes:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">window</span><span class="o">.</span><span class="n">active_scene</span><span class="o">.</span><span class="n">meshes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">local</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">aa</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span>
+<span class="n">window</span><span class="o">.</span><span class="n">active_scene</span><span class="o">.</span><span class="n">meshes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">local</span><span class="o">.</span><span class="n">rotation</span> <span class="o">=</span> <span class="p">(</span><span class="n">aa</span>  <span class="o">*</span> <span class="mi">3</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Here&#8217;s the full code from Tutorial 2:</p>
+<div class="highlight-python"><div class="highlight"><pre>from ratcave import graphics
+from psychopy import events
+import math
+
+# Insert filename into WavefrontReader.
+obj_filename = graphics.resources.obj_primitives
+obj_reader = graphics.WavefrontReader(obj_filename)
+
+# Create Meshes from WavefrontReader
+monkey = obj_reader.get_mesh(&quot;Monkey&quot;, centered=True, position=(0, 0, -1.5))
+cube = obj_reader.get_mesh(&quot;Cube&quot;, centered=True, position=(1, 0, -1.5), scale=.2)
+torus = obj_reader.get_mesh(&quot;Torus&quot;, centered=True, position=(-1, 0, -1.5), scale=.2)
+wire_monkey = obj_reader.get_mesh(&quot;Monkey&quot;, centered=True, drawstyle=&#39;lines&#39;, position=(0, 0, -2)
+
+# Create Scenes with Meshes.
+scene1 = graphics.Scene([monkey, cube])
+scene2 = graphics.Scene([wire_monkey, torus])
+window = graphics.Window(Scene)
+
+# Main Loop
+theta = 0
+while True:
+
+    keys_pressed = events.getKeys()  # getKeys() will empty list each time it returns, so save it to reference it multiple times.
+
+    # End program and close window if escape key is pressed.
+    if &#39;escape&#39; in keys_pressed:
+        window.close()
+        break
+
+    #  Switch active scene if left or right arrow keys are pressed.
+    if &#39;left&#39; in keys_pressed:
+        window.active_scene = scene1
+    elif &#39;right&#39; in keys_pressed:
+        window.active_scene = scene2
+
+
+    # Animate
+    aa += .05
+    window.active_scene.meshes[0].local.position = math.sin(aa), 0, -2
+    window.active_scene.meshes[1].local.rotation = (aa  * 3), 0, 0
+
+    # Draw
+    window.draw()
+    window.flip()
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/ratcave_example.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tutorial 2: Animating a Scene with Multiple Meshes, and using Multiple Scenes</a><ul>
+<li><a class="reference internal" href="#scenes-hold-lists-of-meshes">Scenes Hold Lists of Meshes</a></li>
+<li><a class="reference internal" href="#moving-a-mesh">Moving a Mesh</a></li>
+<li><a class="reference internal" href="#modifying-scene-s-background-color">Modifying Scene&#8217;s Background Color</a></li>
+<li><a class="reference internal" href="#changing-the-active-scene">Changing the Active Scene</a></li>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="tutorials.html">Tutorials</a><ul>
+      <li>Previous: <a href="tutorial1.html" title="previous chapter">Tutorial 1: Displaying a 3D Object</a></li>
+      <li>Next: <a href="tutorial3.html" title="next chapter">Tutorial 3: Using Cubemapping to Render a CAVE VR System</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/tutorial2.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Nicholas A. Del Grosso.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.2.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster </a>
+      
+      |
+      <a href="_sources/tutorial2.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
