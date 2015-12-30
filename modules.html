@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to ratCAVE’s documentation! &mdash; ratCAVE 0.5.0 documentation</title>
+  <title>ratcave &mdash; ratCAVE 0.5.0 documentation</title>
   
 
   
@@ -30,8 +30,7 @@
   
 
   
-    <link rel="top" title="ratCAVE 0.5.0 documentation" href="#"/>
-        <link rel="next" title="Introduction" href="introduction.html"/> 
+    <link rel="top" title="ratCAVE 0.5.0 documentation" href="index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -48,7 +47,7 @@
         
 
         
-          <a href="#" class="icon icon-home"> ratCAVE
+          <a href="index.html" class="icon icon-home"> ratCAVE
         
 
         
@@ -156,7 +155,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="#">ratCAVE</a>
+        <a href="index.html">ratCAVE</a>
       </nav>
 
 
@@ -165,13 +164,13 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="#">Docs</a> &raquo;</li>
+    <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Welcome to ratCAVE&#8217;s documentation!</li>
+    <li>ratcave</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/index.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/modules.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -180,30 +179,48 @@
 </div>
           <div role="main" class="document">
             
-  <div class="section" id="welcome-to-ratcave-s-documentation">
-<h1>Welcome to ratCAVE&#8217;s documentation!<a class="headerlink" href="#welcome-to-ratcave-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>ratCAVE is a Python package for displaying 3D Graphics.  It was inspired by a project meant for displaying a Virtual Reality CAVE Setup for rodents, and was meant as a lightweight alternative to Panda3D.  ratCAVE uses the lightweight OpenGL wrapping provided by Pyglet and advanced OpenGL 3.3+ Features to get a relatively high-performance graphics in an easy-to-use, Pythonic interface.  Currently, only Pyglet and PsychoPy are wrapped as backends, but ratCAVE classes are meant to be &#8220;subclass-friendly&#8221; and should be easily added to the backend graphics engine of your choice.</p>
-<p>Additionally, as Virtual Reality in psychology labs is our original primary targeted user group, this project also has a devices submodule that provides interfaces to NaturalPoints Optitrack NatNet optical tracking system and some USB devices not currently supported in PsychoPy.  These are temporary fixtures, though, for developer convenience (i.e. laziness) as future versions of ratCAVE will focus on increasing graphics performance and the Optitrack class will go into its own Python package.</p>
-<div class="section" id="table-of-contents">
-<h2>Table of Contents:<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="ratcave">
+<h1>ratcave<a class="headerlink" href="#ratcave" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial1.html">Tutorial 1: Displaying a 3D Object</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial2.html">Tutorial 2: Animating a Scene with Multiple Meshes, and using Multiple Scenes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial3.html">Tutorial 3: Using Cubemapping to Render a CAVE VR System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ratcave.html">ratcave package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ratcave.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ratcave.devices.html">ratcave.devices package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.devices.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.devices.html#module-ratcave.devices">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ratcave.html">ratcave package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.html#subpackages">Subpackages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ratcave.graphics.html">ratcave.graphics package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.camera">ratcave.graphics.camera module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.logger">ratcave.graphics.logger module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.mesh">ratcave.graphics.mesh module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.mixins">ratcave.graphics.mixins module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.resources">ratcave.graphics.resources module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.scene">ratcave.graphics.scene module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.shader">ratcave.graphics.shader module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.utils">ratcave.graphics.utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.wavefront">ratcave.graphics.wavefront module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.window">ratcave.graphics.window module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ratcave.utils.html">ratcave.utils package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.eulerangles">ratcave.utils.eulerangles module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.filters">ratcave.utils.filters module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.orienting">ratcave.utils.orienting module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.plotting">ratcave.utils.plotting module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.script_utils">ratcave.utils.script_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.timers">ratcave.utils.timers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="ratcave.html#module-ratcave">Module contents</a></li>
 </ul>
 </li>
-</ul>
-</div>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
 </ul>
 </div>
 </div>
@@ -211,13 +228,6 @@
 
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="introduction.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-    </div>
   
 
   <hr/>

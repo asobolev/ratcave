@@ -1,47 +1,192 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Tutorial 2: Animating a Scene with Multiple Meshes, and using Multiple Scenes &mdash; ratCAVE 0.5.0 documentation</title>
-    
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.5.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="ratCAVE 0.5.0 documentation" href="index.html" />
-    <link rel="up" title="Tutorials" href="tutorials.html" />
-    <link rel="next" title="Tutorial 3: Using Cubemapping to Render a CAVE VR System" href="tutorial3.html" />
-    <link rel="prev" title="Tutorial 1: Displaying a 3D Object" href="tutorial1.html" />
-   
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tutorial 2: Animating a Scene with Multiple Meshes, and using Multiple Scenes &mdash; ratCAVE 0.5.0 documentation</title>
+  
 
-  </head>
-  <body>  
+  
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ratCAVE 0.5.0 documentation" href="index.html"/>
+        <link rel="up" title="Tutorials" href="tutorials.html"/>
+        <link rel="next" title="Tutorial 3: Using Cubemapping to Render a CAVE VR System" href="tutorial3.html"/>
+        <link rel="prev" title="Tutorial 1: Displaying a 3D Object" href="tutorial1.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> ratCAVE
+        
+
+        
+          
+          <img src="_static/ratcave_example.png" class="logo" />
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tutorials.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial1.html">Tutorial 1: Displaying a 3D Object</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial1.html#reading-a-wavefront-obj-file">Reading a Wavefront .obj file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial1.html#creating-a-mesh-from-the-wavefrontreader-and-positioning-it">Creating a Mesh from the WavefrontReader and Positioning it</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial1.html#creating-a-scene">Creating a Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial1.html#creating-a-window-and-rendering-the-scene">Creating a Window and Rendering the Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial1.html#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Tutorial 2: Animating a Scene with Multiple Meshes, and using Multiple Scenes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#scenes-hold-lists-of-meshes">Scenes Hold Lists of Meshes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#moving-a-mesh">Moving a Mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modifying-scene-s-background-color">Modifying Scene&#8217;s Background Color</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#changing-the-active-scene">Changing the Active Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial3.html">Tutorial 3: Using Cubemapping to Render a CAVE VR System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#create-the-virtual-scene">Create the Virtual Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#create-the-projected-scene">Create the Projected Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#put-the-scenes-into-a-window">Put the Scenes into a Window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#tracking-the-subject-player">Tracking The Subject / Player</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#display-loop">Display Loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#setting-your-virtual-meshes-in-arena-coordinates">Setting your virtual meshes in Arena-Coordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#getting-rotation-invariant-tracking-coordinates">Getting Rotation-Invariant Tracking Coordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ratcave.html">ratcave package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ratcave.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ratcave.devices.html">ratcave.devices package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.devices.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.devices.html#module-ratcave.devices">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ratcave.graphics.html">ratcave.graphics package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.camera">ratcave.graphics.camera module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.logger">ratcave.graphics.logger module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.mesh">ratcave.graphics.mesh module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.mixins">ratcave.graphics.mixins module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.resources">ratcave.graphics.resources module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.scene">ratcave.graphics.scene module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.shader">ratcave.graphics.shader module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.utils">ratcave.graphics.utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.wavefront">ratcave.graphics.wavefront module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.window">ratcave.graphics.window module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ratcave.utils.html">ratcave.utils package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.eulerangles">ratcave.utils.eulerangles module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.filters">ratcave.utils.filters module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.orienting">ratcave.utils.orienting module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.plotting">ratcave.utils.plotting module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.script_utils">ratcave.utils.script_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.timers">ratcave.utils.timers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ratcave.html#module-ratcave">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ratCAVE</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="tutorials.html">Tutorials</a> &raquo;</li>
+      
+    <li>Tutorial 2: Animating a Scene with Multiple Meshes, and using Multiple Scenes</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/tutorial2.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
             
   <div class="section" id="tutorial-2-animating-a-scene-with-multiple-meshes-and-using-multiple-scenes">
 <h1>Tutorial 2: Animating a Scene with Multiple Meshes, and using Multiple Scenes<a class="headerlink" href="#tutorial-2-animating-a-scene-with-multiple-meshes-and-using-multiple-scenes" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial will build on the previous one by adding some more interesting elements.  We&#8217;ll allow the user to switch between two different <a class="reference internal" href="ratcave.graphics.html#ratcave.graphics.Scene" title="ratcave.graphics.Scene"><tt class="xref py py-class docutils literal"><span class="pre">Scene</span></tt></a> objects by pressing a key, and have multiple meshes in each scene that move.</p>
+<p>This tutorial will build on the previous one by adding some more interesting elements.  We&#8217;ll allow the user to switch between two different <a class="reference internal" href="ratcave.graphics.html#ratcave.graphics.scene.Scene" title="ratcave.graphics.scene.Scene"><tt class="xref py py-class docutils literal"><span class="pre">Scene</span></tt></a> objects by pressing a key, and have multiple meshes in each scene that move.</p>
 <div class="section" id="scenes-hold-lists-of-meshes">
 <h2>Scenes Hold Lists of Meshes<a class="headerlink" href="#scenes-hold-lists-of-meshes" title="Permalink to this headline">¶</a></h2>
 <p>Let&#8217;s insert a couple Meshes from our obj_reader WavefrontReader object into a couple different scenes.  We&#8217;ll even create a second Monkey object and display it as a wireframe.:</p>
@@ -162,71 +307,68 @@ while True:
 
 
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="index.html">
-              <img class="logo" src="_static/ratcave_example.png" alt="Logo"/>
-            </a></p>
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Tutorial 2: Animating a Scene with Multiple Meshes, and using Multiple Scenes</a><ul>
-<li><a class="reference internal" href="#scenes-hold-lists-of-meshes">Scenes Hold Lists of Meshes</a></li>
-<li><a class="reference internal" href="#moving-a-mesh">Moving a Mesh</a></li>
-<li><a class="reference internal" href="#modifying-scene-s-background-color">Modifying Scene&#8217;s Background Color</a></li>
-<li><a class="reference internal" href="#changing-the-active-scene">Changing the Active Scene</a></li>
-<li><a class="reference internal" href="#summary">Summary</a></li>
-</ul>
-</li>
-</ul>
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-  <li><a href="tutorials.html">Tutorials</a><ul>
-      <li>Previous: <a href="tutorial1.html" title="previous chapter">Tutorial 1: Displaying a 3D Object</a></li>
-      <li>Next: <a href="tutorial3.html" title="next chapter">Tutorial 3: Using Cubemapping to Render a CAVE VR System</a></li>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/tutorial2.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial3.html" class="btn btn-neutral float-right" title="Tutorial 3: Using Cubemapping to Render a CAVE VR System" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial1.html" class="btn btn-neutral" title="Tutorial 1: Displaying a 3D Object" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Nicholas A. Del Grosso.
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2015, Nicholas A. Del Grosso.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.2.3</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster </a>
-      
-      |
-      <a href="_sources/tutorial2.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
+    </section>
 
-    
-  </body>
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.5.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>
