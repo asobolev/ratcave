@@ -1,183 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>ratcave &mdash; ratCAVE 0.5.0 documentation</title>
-  
-
-  
-  
-
-  
-
-  
-  
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-    <link rel="top" title="ratCAVE 0.5.0 documentation" href="index.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
-</head>
-
-<body class="wy-body-for-nav" role="document">
-
-  <div class="wy-grid-for-nav">
-
+    <title>ratcave &mdash; ratCAVE 0.5.0 documentation</title>
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.5.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="ratCAVE 0.5.0 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="index.html">ratCAVE 0.5.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
 
-        
-          <a href="index.html" class="icon icon-home"> ratCAVE
-        
-
-        
-          
-          <img src="_static/ratcave_example.png" class="logo" />
-        
-        </a>
-
-        
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-        
-      </div>
-
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
-          
-          
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial1.html">Tutorial 1: Displaying a 3D Object</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tutorial1.html#reading-a-wavefront-obj-file">Reading a Wavefront .obj file</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial1.html#creating-a-mesh-from-the-wavefrontreader-and-positioning-it">Creating a Mesh from the WavefrontReader and Positioning it</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial1.html#creating-a-scene">Creating a Scene</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial1.html#creating-a-window-and-rendering-the-scene">Creating a Window and Rendering the Scene</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial1.html#summary">Summary</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial2.html">Tutorial 2: Animating a Scene with Multiple Meshes, and using Multiple Scenes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tutorial2.html#scenes-hold-lists-of-meshes">Scenes Hold Lists of Meshes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial2.html#moving-a-mesh">Moving a Mesh</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial2.html#modifying-scene-s-background-color">Modifying Scene&#8217;s Background Color</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial2.html#changing-the-active-scene">Changing the Active Scene</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial2.html#summary">Summary</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial3.html">Tutorial 3: Using Cubemapping to Render a CAVE VR System</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#create-the-virtual-scene">Create the Virtual Scene</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#create-the-projected-scene">Create the Projected Scene</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#put-the-scenes-into-a-window">Put the Scenes into a Window</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#tracking-the-subject-player">Tracking The Subject / Player</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#display-loop">Display Loop</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#setting-your-virtual-meshes-in-arena-coordinates">Setting your virtual meshes in Arena-Coordinates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#getting-rotation-invariant-tracking-coordinates">Getting Rotation-Invariant Tracking Coordinates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial3.html#summary">Summary</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="ratcave.html">ratcave package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ratcave.devices.html">ratcave.devices package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.devices.html#subpackages">Subpackages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.devices.html#module-ratcave.devices">Module contents</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="ratcave.graphics.html">ratcave.graphics package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.camera">ratcave.graphics.camera module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.logger">ratcave.graphics.logger module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.mesh">ratcave.graphics.mesh module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.mixins">ratcave.graphics.mixins module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.resources">ratcave.graphics.resources module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.scene">ratcave.graphics.scene module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.shader">ratcave.graphics.shader module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.utils">ratcave.graphics.utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.wavefront">ratcave.graphics.wavefront module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.window">ratcave.graphics.window module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics">Module contents</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="ratcave.utils.html">ratcave.utils package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.eulerangles">ratcave.utils.eulerangles module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.filters">ratcave.utils.filters module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.orienting">ratcave.utils.orienting module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.plotting">ratcave.utils.plotting module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.script_utils">ratcave.utils.script_utils module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.timers">ratcave.utils.timers module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils">Module contents</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.html#module-ratcave">Module contents</a></li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      </div>
-      &nbsp;
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">ratCAVE</a>
-      </nav>
-
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>ratcave</li>
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="_sources/modules.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document">
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
             
   <div class="section" id="ratcave">
 <h1>ratcave<a class="headerlink" href="#ratcave" title="Permalink to this headline">¶</a></h1>
@@ -227,59 +89,47 @@
 
 
           </div>
-          <footer>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2015, Nicholas A. Del Grosso.
-    </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-
-</footer>
-
         </div>
       </div>
-
-    </section>
-
-  </div>
-  
-
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.5.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
-      });
-  </script>
-   
-
-</body>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/ratcave_example.png" alt="Logo"/>
+            </a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/modules.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="index.html">ratCAVE 0.5.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Nicholas A. Del Grosso.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
 </html>
