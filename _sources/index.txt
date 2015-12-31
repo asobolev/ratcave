@@ -19,7 +19,8 @@ Table of Contents:
 
    introduction
    tutorials
-   ratcave
+   ratcave.graphics
+   ratcave.utils
 
 * :ref:`genindex`
 
