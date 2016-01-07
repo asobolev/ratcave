@@ -1,6 +1,5 @@
-ratcave.graphics
-================
-
+ratcave.graphics package
+========================
 
 .. automodule:: ratcave.graphics
     :members:
