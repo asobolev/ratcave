@@ -30,7 +30,9 @@
   
 
   
-    <link rel="top" title="ratCAVE 0.5.0 documentation" href="index.html"/> 
+    <link rel="top" title="ratCAVE 0.5.0 documentation" href="index.html"/>
+        <link rel="next" title="ratcave.utils package" href="ratcave.utils.html"/>
+        <link rel="prev" title="Tutorial 3: Using Cubemapping to Render a CAVE VR System" href="tutorial3.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -72,7 +74,7 @@
         
           
           
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorial1.html">Tutorial 1: Displaying a 3D Object</a><ul>
@@ -104,16 +106,20 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ratcave.graphics.html">ratcave.graphics package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ratcave.utils.html">ratcave.utils package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.eulerangles">ratcave.utils.eulerangles module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.filters">ratcave.utils.filters module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.orienting">ratcave.utils.orienting module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.plotting">ratcave.utils.plotting module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.script_utils">ratcave.utils.script_utils module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.timers">ratcave.utils.timers module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils">Module contents</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">ratcave package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ratcave.utils.html">ratcave.utils package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.eulerangles">ratcave.utils.eulerangles module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.gl">ratcave.utils.gl module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.orienting">ratcave.utils.orienting module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.script_utils">ratcave.utils.script_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.timers">ratcave.utils.timers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -153,19 +159,432 @@
 </div>
           <div role="main" class="document">
             
-  <div class="section" id="ratcave-package">
-<h1>ratcave package<a class="headerlink" href="#ratcave-package" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-ratcave">
+<span id="ratcave-package"></span><h1>ratcave package<a class="headerlink" href="#module-ratcave" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ratcave.Camera">
+<em class="property">class </em><tt class="descclassname">ratcave.</tt><tt class="descname">Camera</tt><big>(</big><em>position=(0.0</em>, <em>0.0</em>, <em>0.0)</em>, <em>rotation=(0.0</em>, <em>0.0</em>, <em>0.0)</em>, <em>fov_y=60.0</em>, <em>aspect=1.778</em>, <em>z_near=0.01</em>, <em>z_far=4.5</em>, <em>x_shift=0.0</em>, <em>y_shift=0.0</em>, <em>ortho_mode=False</em><big>)</big><a class="headerlink" href="#ratcave.Camera" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">ratcave.mixins.Physical</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">ratcave.mixins.Picklable</span></tt></p>
+<p>A convenient object for controlling the scene viewing angle.</p>
+<p>My camera class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>position</strong> (<em>tuple</em>) &#8211; (x,y,z)</li>
+<li><strong>rotation</strong> (<em>tuple</em>) &#8211; (x,y,z)</li>
+<li><strong>fov_y</strong> (<em>float</em>) &#8211; vertical field of view (degrees)</li>
+<li><strong>aspect</strong> (<em>float</em>) &#8211; screen width/height</li>
+<li><strong>z_near</strong> (<em>float</em>) &#8211; near clipping distance</li>
+<li><strong>z_far</strong> (<em>float</em>) &#8211; far clipping distance</li>
+<li><strong>x_shift</strong> (<em>float</em>) &#8211; horizontal lens shift</li>
+<li><strong>y_shift</strong> (<em>float</em>) &#8211; vertical lens shift</li>
+<li><strong>ortho_mode</strong> (<em>bool</em>) &#8211; Whether to use orthographic projection instead of perpective projection.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Camera instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ratcave.Camera.update_matrices">
+<tt class="descname">update_matrices</tt><big>(</big><big>)</big><a class="headerlink" href="#ratcave.Camera.update_matrices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convenience method. Calls all Camera.update_x() methods.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.Camera.update_projection_matrix">
+<tt class="descname">update_projection_matrix</tt><big>(</big><big>)</big><a class="headerlink" href="#ratcave.Camera.update_projection_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>np.array: The Camera&#8217;s Projection Matrix.  Will be an Orthographic matrix if ortho_mode is set to True.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.Camera.update_shift_matrix">
+<tt class="descname">update_shift_matrix</tt><big>(</big><big>)</big><a class="headerlink" href="#ratcave.Camera.update_shift_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>np.array: The Camera&#8217;s lens-shift matrix.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ratcave.Logger">
+<em class="property">class </em><tt class="descclassname">ratcave.</tt><tt class="descname">Logger</tt><big>(</big><em>scenes</em>, <em>exp_name</em>, <em>log_directory='./logs'</em>, <em>metadata_dict={}</em>, <em>phys_encoder=&lt;function encode_phys at 0x2b02737ea0c8&gt;</em>, <em>buffer_len=240</em><big>)</big><a class="headerlink" href="#ratcave.Logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="method">
+<dt id="ratcave.Logger.write">
+<tt class="descname">write</tt><big>(</big><em>note=None</em><big>)</big><a class="headerlink" href="#ratcave.Logger.write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ratcave.Mesh">
+<em class="property">class </em><tt class="descclassname">ratcave.</tt><tt class="descname">Mesh</tt><big>(</big><em>mesh_data</em>, <em>material=&lt;ratcave.mesh.Material object at 0x2b02638f29d0&gt;</em>, <em>scale=1.0</em>, <em>centered=False</em>, <em>lighting=True</em>, <em>drawstyle='fill'</em>, <em>cubemap=False</em>, <em>position=(0</em>, <em>0</em>, <em>0)</em>, <em>rotation=(0</em>, <em>0</em>, <em>0)</em>, <em>visible=True</em>, <em>point_size=4</em><big>)</big><a class="headerlink" href="#ratcave.Mesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">ratcave.mixins.Picklable</span></tt></p>
+<p>Returns a Mesh object, containing the position, rotation, and color info of an OpenGL Mesh.</p>
+<p>Meshes have two coordinate system, the &#8220;local&#8221; and &#8220;world&#8221; systems, on which the transforms are performed
+sequentially.  This allows them to be placed in the scene while maintaining a relative position to one another.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Meshes are not usually instantiated directly, but from a 3D file, like the WavefrontReader .obj and .mtl files.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>mesh_data</strong> (<em>MeshData</em>) &#8211; MeshData object containing the vertex data to be displayed.</li>
+<li><strong>material</strong> (<em>Material</em>) &#8211; Material object containing the color data for how the Mesh should be lit.</li>
+<li><strong>scale</strong> (<em>float</em>) &#8211; local size scaling factor (1.0 is normal size)</li>
+<li><strong>centered</strong> (<em>bool</em>) &#8211; if True, sets local position to 0 after mean-centering the vertices. If false, sets it to the mean.</li>
+<li><strong>lighting</strong> (<em>bool</em>) &#8211; Whether 3D shading should be done when rendering the mesh. If not, will be rendered with flat shading in its diffuse color.</li>
+<li><strong>drawstyle</strong> (<em>str</em>) &#8211; &#8216;point&#8217;: only vertices, &#8216;line&#8217;: points and edges, &#8216;fill&#8217;: points, edges, and faces (full)</li>
+<li><strong>cubemap</strong> (<em>bool</em>) &#8211; whether the cubemap texture will be applied to this Mesh.</li>
+<li><strong>position</strong> (<em>tuple</em>) &#8211; the local (x,y,z) position of the Mesh (default 0,0,0)</li>
+<li><strong>rotation</strong> (<em>tuple</em>) &#8211; the local (x,y,z) rotation of the Mesh, in degrees (default 0,0,0)</li>
+<li><strong>visible</strong> (<em>bool</em>) &#8211; whether the Mesh is available to be rendered.  To make hidden (invisible), set to False.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="ratcave.Mesh.local">
+<tt class="descname">local</tt><a class="headerlink" href="#ratcave.Mesh.local" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="#ratcave.Physical" title="ratcave.Physical"><tt class="xref py py-class docutils literal"><span class="pre">Physical</span></tt></a> &#8211; The local position and rotation of the Mesh.  This shift is done first, so should be used for general positioning.  If <em>centered</em> is set to False, the local position will be set as the mean vertex coordinates from <a class="reference internal" href="#ratcave.MeshData" title="ratcave.MeshData"><tt class="xref py py-class docutils literal"><span class="pre">MeshData</span></tt></a>, so Mesh will appear in the same location as the Mesh&#8217;s original position in its file.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ratcave.Mesh.world">
+<tt class="descname">world</tt><a class="headerlink" href="#ratcave.Mesh.world" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="#ratcave.Physical" title="ratcave.Physical"><tt class="xref py py-class docutils literal"><span class="pre">Physical</span></tt></a> &#8211; The world position and rotation of the Mesh.  World position is used for moving an object about another point, so that multiple objects can be moved at once and retain their inter-object distances and orientations.  By default, set to the origin.</p>
+</dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Mesh instance</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ratcave.Mesh.get_vertex_data">
+<tt class="descname">get_vertex_data</tt><big>(</big><big>)</big><a class="headerlink" href="#ratcave.Mesh.get_vertex_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns (vertex, normal, texture_uv) arrays.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.Mesh.load_texture">
+<tt class="descname">load_texture</tt><big>(</big><em>file_name</em><big>)</big><a class="headerlink" href="#ratcave.Mesh.load_texture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a texture from an image file into OpenGL and applies it to the Mesh for rendering.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ratcave.Mesh.position">
+<tt class="descname">position</tt><a class="headerlink" href="#ratcave.Mesh.position" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ratcave.Mesh.update_matrices">
+<tt class="descname">update_matrices</tt><big>(</big><big>)</big><a class="headerlink" href="#ratcave.Mesh.update_matrices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the model and normal matrices used internally for positioning and shading.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ratcave.MeshData">
+<em class="property">class </em><tt class="descclassname">ratcave.</tt><tt class="descname">MeshData</tt><big>(</big><em>vertices</em>, <em>face_indices</em>, <em>normals</em>, <em>texture_uv</em><big>)</big><a class="headerlink" href="#ratcave.MeshData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Collects all vertex data for rendering in 3D graphics packages.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>vertices</strong> (<em>list</em>) &#8211; Nx3 vertex array</li>
+<li><strong>face_indices</strong> (<em>list</em>) &#8211; Nx3 Face index array (0-indexed)</li>
+<li><strong>normals</strong> (<em>list</em>) &#8211; Nx3 normals array</li>
+<li><strong>texture_uv</strong> (<em>list</em>) &#8211; Nx2 texture_uv array</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">MeshData object</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="ratcave.Material">
+<em class="property">class </em><tt class="descclassname">ratcave.</tt><tt class="descname">Material</tt><big>(</big><em>name='DefaultGray'</em>, <em>diffuse=(0.8</em>, <em>0.8</em>, <em>0.8</em>, <em>1.0)</em>, <em>spec_weight=0</em>, <em>spec_color=(0</em>, <em>0</em>, <em>0</em>, <em>1.0)</em>, <em>ambient=(0</em>, <em>0</em>, <em>0</em>, <em>1.0)</em>, <em>dissolve=0</em><big>)</big><a class="headerlink" href="#ratcave.Material" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Contains material settings that it gets from a .mtl file
+(must be same filename as .obj file). Currently requires all
+material settings to create object, and relies on defaults to be set
+in the object initialization!</p>
+<p>Returns a Material object containing various Color properties for 3D shading in graphics packages.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> &#8211; (str): The name of the material</li>
+<li><strong>diffuse</strong> (<em>tuple</em>) &#8211; (r,g,b) values for diffuse reflections.  Also used as color if flat shading is used.</li>
+<li><strong>spec_weight</strong> (<em>float</em>) &#8211; falloff exponent for specular shading. if &lt;= 1, specular lighting is not performed.</li>
+<li><strong>spec_color</strong> (<em>tuple</em>) &#8211; (r,g,b) values for specular reflections</li>
+<li><strong>ambient</strong> (<em>tuple</em>) &#8211; (r,g,b) values for ambient reflections.</li>
+<li><strong>dissolve</strong> (<em>float</em>) &#8211; Dissolve transparancy level (0-1).  Not implemented for shading yet, though.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Material instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Transparancy hasn&#8217;t been fully implemented yet.  If alpha values are changed from 1., unexpected outputs may occur.</p>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="ratcave.Physical">
+<em class="property">class </em><tt class="descclassname">ratcave.</tt><tt class="descname">Physical</tt><big>(</big><em>position=(0.0</em>, <em>0.0</em>, <em>0.0)</em>, <em>rotation=(0.0</em>, <em>0.0</em>, <em>0.0)</em>, <em>scale=1.0</em><big>)</big><a class="headerlink" href="#ratcave.Physical" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>XYZ Position, Scale and XYZEuler Rotation Class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>position</strong> (<em>list</em>) &#8211; (x, y, z) translation values.</li>
+<li><strong>rotation</strong> (<em>list</em>) &#8211; (x, y, z) rotation values</li>
+<li><strong>scale</strong> (<em>float</em>) &#8211; uniform scale factor. 1 = no scaling.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="ratcave.Physical.model_matrix">
+<tt class="descname">model_matrix</tt><a class="headerlink" href="#ratcave.Physical.model_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>The 4x4 model matrix.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ratcave.Physical.normal_matrix">
+<tt class="descname">normal_matrix</tt><a class="headerlink" href="#ratcave.Physical.normal_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>The 4x4 normal matrix, which is the inverse of the transpose of the model matrix.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ratcave.Physical.position">
+<tt class="descname">position</tt><a class="headerlink" href="#ratcave.Physical.position" title="Permalink to this definition">¶</a></dt>
+<dd><p>xyz position</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ratcave.Physical.rotation">
+<tt class="descname">rotation</tt><a class="headerlink" href="#ratcave.Physical.rotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>XYZ Euler rotation, in degrees</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.Physical.start">
+<tt class="descname">start</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#ratcave.Physical.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interface for implementing physics. Subclassed Physical objects can take advantage of this.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.Physical.update">
+<tt class="descname">update</tt><big>(</big><em>dt</em><big>)</big><a class="headerlink" href="#ratcave.Physical.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interface for implementing physics. Subclassed Physical objects can take advantage of this.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ratcave.Physical.view_matrix">
+<tt class="descname">view_matrix</tt><a class="headerlink" href="#ratcave.Physical.view_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>The 4x4 view matrix.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ratcave.Scene">
+<em class="property">class </em><tt class="descclassname">ratcave.</tt><tt class="descname">Scene</tt><big>(</big><em>meshes=[]</em>, <em>camera=None</em>, <em>light=None</em>, <em>bgColor=(0.0</em>, <em>0.0</em>, <em>0.0</em>, <em>1.0)</em><big>)</big><a class="headerlink" href="#ratcave.Scene" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Returns a Scene object.  Scenes manage rendering of Meshes, Lights, and Cameras.</p>
+<dl class="method">
+<dt id="ratcave.Scene.update_matrices">
+<tt class="descname">update_matrices</tt><big>(</big><big>)</big><a class="headerlink" href="#ratcave.Scene.update_matrices" title="Permalink to this definition">¶</a></dt>
+<dd><p>calls the &#8220;update_matrices&#8221; method on all meshes and camera, so that all data is current.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ratcave.Window">
+<em class="property">class </em><tt class="descclassname">ratcave.</tt><tt class="descname">Window</tt><big>(</big><em>active_scene</em>, <em>virtual_scene=None</em>, <em>grayscale=False</em>, <em>shadow_rendering=True</em>, <em>shadow_fov_y=80.0</em>, <em>texture_size=1024</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#ratcave.Window" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">psychopy.visual.window.Window</span></tt></p>
+<p>The Window that everything gets drawn in.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>active_scene</strong> (<a class="reference internal" href="#ratcave.Scene" title="ratcave.Scene"><tt class="xref py py-class docutils literal"><span class="pre">Scene</span></tt></a>) &#8211; The scene that is rendered onto the Window.</li>
+<li><strong>virtual_scene</strong> (<a class="reference internal" href="#ratcave.Scene" title="ratcave.Scene"><tt class="xref py py-class docutils literal"><span class="pre">Scene</span></tt></a>) &#8211; Used for VR, the scene that gets rendered onto <a class="reference internal" href="#ratcave.Mesh" title="ratcave.Mesh"><tt class="xref py py-class docutils literal"><span class="pre">Mesh</span></tt></a> objects that have <tt class="xref py py-attr docutils literal"><span class="pre">Mesh.cubemap</span></tt> set to True (usually the 3d-modeled arena).</li>
+<li><strong>grayscale</strong> (<em>bool</em>) &#8211; Whether to render in grayscale or not&#8211;has some slight performance advantages, with more being planned in the future.</li>
+<li><strong>shadow_rendering</strong> (<em>bool</em>) &#8211; Whether to render shadows from the Scenes&#8217; <tt class="xref py py-class docutils literal"><span class="pre">Light</span></tt> position.</li>
+<li><strong>shadow_fov_y</strong> (<em>float</em>) &#8211; How wide an area to render shadows&#8211;too small and their may be weird squares projected, but larger numbers result in lower quality shadows.</li>
+<li><strong>texture_size</strong> (<em>int</em>) &#8211; How big the shadow and cube textures should be on a side.  For performance reasons, should be set to a value that is a power of two.</li>
+<li><strong>fullscr</strong> (<em>bool</em>) &#8211; Defaults to False, allows a full screen to be used.</li>
+<li><strong>screen</strong> (<em>int</em>) &#8211; Which number screen to place the window on.</li>
+<li><strong>size</strong> (<em>tuple</em>) &#8211; Size of the window in pixels (X, Y). Defaults to (800, 600)</li>
+<li><strong>pos</strong> (<em>None or (x,y</em>) &#8211; </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ratcave.Window.close">
+<tt class="descname">close</tt><big>(</big><big>)</big><a class="headerlink" href="#ratcave.Window.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Closes the window.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.Window.draw">
+<tt class="descname">draw</tt><big>(</big><big>)</big><a class="headerlink" href="#ratcave.Window.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Active scene drawn, virtual scene is rendered to a cubemap. iF auto_light_position is True, then automatically
+put the lights for the active and virtual scene to the active scene&#8217;s camera position (useful for convenient CAVE
+api.)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.Window.flip">
+<tt class="descname">flip</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#ratcave.Window.flip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends the framebuffer contents to the display.  Call each frame after the draw method!</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.Window.render_mesh">
+<tt class="descname">render_mesh</tt><big>(</big><em>mesh</em>, <em>shader</em><big>)</big><a class="headerlink" href="#ratcave.Window.render_mesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends the Mesh&#8217;s Model and Normal matrices to an already-bound Shader, and bind and render the Mesh&#8217;s VAO.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.Window.render_shadow">
+<tt class="descname">render_shadow</tt><big>(</big><em>scene</em><big>)</big><a class="headerlink" href="#ratcave.Window.render_shadow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update light view matrix to match the camera&#8217;s, then render to the Shadow FBO depth texture.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.Window.render_to_antialias">
+<tt class="descname">render_to_antialias</tt><big>(</big><em>scene</em><big>)</big><a class="headerlink" href="#ratcave.Window.render_to_antialias" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render the scene to texture, then render the texture to screen after antialiasing it.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.Window.render_to_cubemap">
+<tt class="descname">render_to_cubemap</tt><big>(</big><em>scene</em><big>)</big><a class="headerlink" href="#ratcave.Window.render_to_cubemap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renders the scene 360-degrees about the camera&#8217;s position onto a cubemap texture.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.Window.resize">
+<tt class="descname">resize</tt><big>(</big><big>)</big><a class="headerlink" href="#ratcave.Window.resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize Active Scenes&#8217; Cameras to Window dimensions.  Virtual Scenes&#8217; Cameras should always be square.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ratcave.WavefrontReader">
+<em class="property">class </em><tt class="descclassname">ratcave.</tt><tt class="descname">WavefrontReader</tt><big>(</big><em>file_name</em><big>)</big><a class="headerlink" href="#ratcave.WavefrontReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Reads Wavefront (.obj) files created in Blender to build ratCAVE.graphics Mesh objects.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>file_name</strong> (<em>str</em>) &#8211; .obj file to read (assumes an accompanying .mtl file has the same base file name.)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">WavefrontReader</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ratcave.WavefrontReader.get_mesh">
+<tt class="descname">get_mesh</tt><big>(</big><em>mesh_name</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#ratcave.WavefrontReader.get_mesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a Mesh object for directly rendering in a scene.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>mesh_name</strong> &#8211; </li>
+<li><strong>kwargs</strong> &#8211; All of Mesh&#8217;s keword arguments will be applied to the Mesh, for convenient Mesh creation.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Mesh</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Mesh</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.WavefrontReader.get_meshes">
+<tt class="descname">get_meshes</tt><big>(</big><em>mesh_names</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#ratcave.WavefrontReader.get_meshes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary of meshes, with kwargs applied to all meshes identically, as in get_mesh()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.WavefrontReader.get_scene">
+<tt class="descname">get_scene</tt><big>(</big><em>include=[]</em>, <em>exclude=[]</em><big>)</big><a class="headerlink" href="#ratcave.WavefrontReader.get_scene" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Scene object containing the Meshes in the file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>include</strong> (<em>list</em>) &#8211; mesh names to only include.</li>
+<li><strong>exclude</strong> (<em>list</em>) &#8211; mesh names to exclude.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#ratcave.Scene" title="ratcave.Scene"><tt class="xref py py-class docutils literal"><span class="pre">Scene</span></tt></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
 <div class="section" id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="ratcave.graphics.html">ratcave.graphics package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ratcave.utils.html">ratcave.utils package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.eulerangles">ratcave.utils.eulerangles module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.filters">ratcave.utils.filters module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.gl">ratcave.utils.gl module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.orienting">ratcave.utils.orienting module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.plotting">ratcave.utils.plotting module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.script_utils">ratcave.utils.script_utils module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.timers">ratcave.utils.timers module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils">Module contents</a></li>
@@ -174,14 +593,20 @@
 </ul>
 </div>
 </div>
-<div class="section" id="module-ratcave">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ratcave" title="Permalink to this headline">¶</a></h2>
-</div>
 </div>
 
 
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ratcave.utils.html" class="btn btn-neutral float-right" title="ratcave.utils package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial3.html" class="btn btn-neutral" title="Tutorial 3: Using Cubemapping to Render a CAVE VR System" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

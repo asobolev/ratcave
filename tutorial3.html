@@ -32,7 +32,7 @@
   
     <link rel="top" title="ratCAVE 0.5.0 documentation" href="index.html"/>
         <link rel="up" title="Tutorials" href="tutorials.html"/>
-        <link rel="next" title="ratcave.graphics package" href="ratcave.graphics.html"/>
+        <link rel="next" title="ratcave package" href="ratcave.html"/>
         <link rel="prev" title="Tutorial 2: Animating a Scene with Multiple Meshes, and using Multiple Scenes" href="tutorial2.html"/> 
 
   
@@ -107,16 +107,20 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ratcave.graphics.html">ratcave.graphics package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ratcave.utils.html">ratcave.utils package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.eulerangles">ratcave.utils.eulerangles module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.filters">ratcave.utils.filters module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.orienting">ratcave.utils.orienting module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.plotting">ratcave.utils.plotting module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.script_utils">ratcave.utils.script_utils module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.timers">ratcave.utils.timers module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils">Module contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ratcave.html">ratcave package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ratcave.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ratcave.utils.html">ratcave.utils package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.eulerangles">ratcave.utils.eulerangles module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.gl">ratcave.utils.gl module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.orienting">ratcave.utils.orienting module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.script_utils">ratcave.utils.script_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.timers">ratcave.utils.timers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -160,12 +164,16 @@
             
   <div class="section" id="tutorial-3-using-cubemapping-to-render-a-cave-vr-system">
 <h1>Tutorial 3: Using Cubemapping to Render a CAVE VR System<a class="headerlink" href="#tutorial-3-using-cubemapping-to-render-a-cave-vr-system" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This Tutorial is currently out of date.</p>
+</div>
 <dl class="docutils">
 <dt>CAVE VR relies on position updates from head trackers to render a virtual scene from the subject&#8217;s perspective in virtual space, then to warp a video projection so that to the viewer the virtual scene appears to be geometrically correct  We use a cubemapping approach to do just that:</dt>
 <dd><ul class="first last simple">
-<li><a class="reference internal" href="ratcave.graphics.html#ratcave.graphics.Mesh" title="ratcave.graphics.Mesh"><code class="xref py py-class docutils literal"><span class="pre">Mesh</span></code></a> objects are placed into the virtual <a class="reference internal" href="ratcave.graphics.html#ratcave.graphics.Scene" title="ratcave.graphics.Scene"><code class="xref py py-class docutils literal"><span class="pre">Scene</span></code></a> object as in the previous two tutorials. However, this <a class="reference internal" href="ratcave.graphics.html#ratcave.graphics.Scene" title="ratcave.graphics.Scene"><code class="xref py py-class docutils literal"><span class="pre">Scene</span></code></a> is placed in the <code class="xref py py-attr docutils literal"><span class="pre">Window.virtual_scene</span></code> attribute, instead of the <code class="xref py py-attr docutils literal"><span class="pre">Window.active_scene</span></code> attribute.</li>
-<li>The screen itself, being the thing that is actually projected by the display, is placed in as the <code class="xref py py-meth docutils literal"><span class="pre">Window.active_scene()</span></code>.  This <a class="reference internal" href="ratcave.graphics.html#ratcave.graphics.Scene" title="ratcave.graphics.Scene"><code class="xref py py-class docutils literal"><span class="pre">Scene</span></code></a> contains 3D-Modeled version of the the projected surface as a <a class="reference internal" href="ratcave.graphics.html#ratcave.graphics.Mesh" title="ratcave.graphics.Mesh"><code class="xref py py-class docutils literal"><span class="pre">Mesh</span></code></a> object, and its <code class="xref py py-meth docutils literal"><span class="pre">Mesh.cubemap()</span></code> attribute is set to True. The <em>Active Scene&#8217;s</em> <a class="reference internal" href="ratcave.graphics.html#ratcave.graphics.Camera" title="ratcave.graphics.Camera"><code class="xref py py-class docutils literal"><span class="pre">Camera</span></code></a> is then set to be in the same position, rotation, and other properties as the projector itself.  Getting accurate measurements of your projection surface and projector can be challenging, so ratCAVE comes with a few console scripts to give you an idea of how this can be made to work (and, if you&#8217;re from the Sirota lab at LMU, you can even use these scripts to automatically calibrate them both!).  Future versions will include a more general approach for different setups.</li>
-<li>Each frame, the subject&#8217;s position is taken from a tracker (for Motive/Optitrack users, we&#8217;ve included a <code class="xref py py-class docutils literal"><span class="pre">Optitrack</span></code> class for easily getting NatNet data, but any interface will work for this.) and set to the <em>Virtual Scene&#8217;s</em> camera position.  Simply calling the <a class="reference internal" href="ratcave.graphics.html#ratcave.graphics.Window.draw" title="ratcave.graphics.Window.draw"><code class="xref py py-meth docutils literal"><span class="pre">Window.draw()</span></code></a> and <a class="reference internal" href="ratcave.graphics.html#ratcave.graphics.Window.flip" title="ratcave.graphics.Window.flip"><code class="xref py py-meth docutils literal"><span class="pre">Window.flip()</span></code></a> methods as usual will take care of the rest!</li>
+<li><a class="reference internal" href="ratcave.html#ratcave.Mesh" title="ratcave.Mesh"><tt class="xref py py-class docutils literal"><span class="pre">Mesh</span></tt></a> objects are placed into the virtual <a class="reference internal" href="ratcave.html#ratcave.Scene" title="ratcave.Scene"><tt class="xref py py-class docutils literal"><span class="pre">Scene</span></tt></a> object as in the previous two tutorials. However, this <a class="reference internal" href="ratcave.html#ratcave.Scene" title="ratcave.Scene"><tt class="xref py py-class docutils literal"><span class="pre">Scene</span></tt></a> is placed in the <tt class="xref py py-attr docutils literal"><span class="pre">Window.virtual_scene</span></tt> attribute, instead of the <tt class="xref py py-attr docutils literal"><span class="pre">Window.active_scene</span></tt> attribute.</li>
+<li>The screen itself, being the thing that is actually projected by the display, is placed in as the <tt class="xref py py-meth docutils literal"><span class="pre">Window.active_scene()</span></tt>.  This <a class="reference internal" href="ratcave.html#ratcave.Scene" title="ratcave.Scene"><tt class="xref py py-class docutils literal"><span class="pre">Scene</span></tt></a> contains 3D-Modeled version of the the projected surface as a <a class="reference internal" href="ratcave.html#ratcave.Mesh" title="ratcave.Mesh"><tt class="xref py py-class docutils literal"><span class="pre">Mesh</span></tt></a> object, and its <tt class="xref py py-meth docutils literal"><span class="pre">Mesh.cubemap()</span></tt> attribute is set to True. The <em>Active Scene&#8217;s</em> <a class="reference internal" href="ratcave.html#ratcave.Camera" title="ratcave.Camera"><tt class="xref py py-class docutils literal"><span class="pre">Camera</span></tt></a> is then set to be in the same position, rotation, and other properties as the projector itself.  Getting accurate measurements of your projection surface and projector can be challenging, so ratCAVE comes with a few console scripts to give you an idea of how this can be made to work (and, if you&#8217;re from the Sirota lab at LMU, you can even use these scripts to automatically calibrate them both!).  Future versions will include a more general approach for different setups.</li>
+<li>Each frame, the subject&#8217;s position is taken from a tracker (for Motive/Optitrack users, we&#8217;ve included a <tt class="xref py py-class docutils literal"><span class="pre">Optitrack</span></tt> class for easily getting NatNet data, but any interface will work for this.) and set to the <em>Virtual Scene&#8217;s</em> camera position.  Simply calling the <a class="reference internal" href="ratcave.html#ratcave.Window.draw" title="ratcave.Window.draw"><tt class="xref py py-meth docutils literal"><span class="pre">Window.draw()</span></tt></a> and <a class="reference internal" href="ratcave.html#ratcave.Window.flip" title="ratcave.Window.flip"><tt class="xref py py-meth docutils literal"><span class="pre">Window.flip()</span></tt></a> methods as usual will take care of the rest!</li>
 </ul>
 </dd>
 </dl>
@@ -186,7 +194,7 @@
 </div>
 <div class="section" id="create-the-projected-scene">
 <h2>Create the Projected Scene<a class="headerlink" href="#create-the-projected-scene" title="Permalink to this headline">¶</a></h2>
-<p>The Projected Scene is what is actually sent to the display.  It will contain the projector as a <a class="reference internal" href="ratcave.graphics.html#ratcave.graphics.Camera" title="ratcave.graphics.Camera"><code class="xref py py-class docutils literal"><span class="pre">Camera</span></code></a> object, and the shape of the projected surface (for example, the rodent&#8217;s arena floor and walls) as a <a class="reference internal" href="ratcave.graphics.html#ratcave.graphics.Mesh" title="ratcave.graphics.Mesh"><code class="xref py py-class docutils literal"><span class="pre">Mesh</span></code></a> object with the <code class="xref py py-attr docutils literal"><span class="pre">Mesh.cubemap</span></code> flag set to True.:</p>
+<p>The Projected Scene is what is actually sent to the display.  It will contain the projector as a <a class="reference internal" href="ratcave.html#ratcave.Camera" title="ratcave.Camera"><tt class="xref py py-class docutils literal"><span class="pre">Camera</span></tt></a> object, and the shape of the projected surface (for example, the rodent&#8217;s arena floor and walls) as a <a class="reference internal" href="ratcave.html#ratcave.Mesh" title="ratcave.Mesh"><tt class="xref py py-class docutils literal"><span class="pre">Mesh</span></tt></a> object with the <tt class="xref py py-attr docutils literal"><span class="pre">Mesh.cubemap</span></tt> flag set to True.:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Import Arena shape as a Mesh</span>
 <span class="n">arena_reader</span> <span class="o">=</span> <span class="n">graphics</span><span class="o">.</span><span class="n">WavefrontReader</span><span class="p">(</span><span class="s">&#39;MyArenaFile.obj&#39;</span><span class="p">)</span>
 <span class="n">arena</span> <span class="o">=</span> <span class="n">arena_reader</span><span class="o">.</span><span class="n">get_mesh</span><span class="p">(</span><span class="s">&#39;Arena&#39;</span><span class="p">)</span>
@@ -223,7 +231,7 @@
 </div>
 <div class="section" id="tracking-the-subject-player">
 <h2>Tracking The Subject / Player<a class="headerlink" href="#tracking-the-subject-player" title="Permalink to this headline">¶</a></h2>
-<p>Finally, you need to tell ratCAVE from which perspective the virtual scene should be drawn from! This perpsective is the virtual scene&#8217;s camera.  In this tutorial, we&#8217;ll use our <code class="xref py py-class docutils literal"><span class="pre">Optitrack</span></code> object to get the player&#8217;s position, but any method you wish can be used to assign an x,y,z position to the virtual scene&#8217;s <code class="xref py py-attr docutils literal"><span class="pre">Scene.camera.position</span></code> attribute:</p>
+<p>Finally, you need to tell ratCAVE from which perspective the virtual scene should be drawn from! This perpsective is the virtual scene&#8217;s camera.  In this tutorial, we&#8217;ll use our <tt class="xref py py-class docutils literal"><span class="pre">Optitrack</span></tt> object to get the player&#8217;s position, but any method you wish can be used to assign an x,y,z position to the virtual scene&#8217;s <tt class="xref py py-attr docutils literal"><span class="pre">Scene.camera.position</span></tt> attribute:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">ratcave.devices</span> <span class="kn">import</span> <span class="n">Optitrack</span>
 
 <span class="c"># Connect to the motion tracker and get the player&#39;s position as an object</span>
@@ -265,7 +273,7 @@
 <p class="first admonition-title">Note</p>
 <p class="last">This problem does not affect the Mesh&#8217;s apparant shape, however&#8211;all geometric warping will continue to be correct.</p>
 </div>
-<p>To solve this, we can set each virtual Mesh&#8217;s <code class="xref py py-attr docutils literal"><span class="pre">Mesh.global.position</span></code> and <code class="xref py py-attr docutils literal"><span class="pre">Mesh.global.rotation</span></code> properties to match the position of the Arena!  When this happens, everything will be centered on the arena, and their <code class="xref py py-attr docutils literal"><span class="pre">Mesh.local.position</span></code> and <code class="xref py py-attr docutils literal"><span class="pre">Mesh.local.rotatoin</span></code> properties can be used to reposition them as normal.  Doing this thus moves your positioning from <em>Absolute Coordinates</em> to <em>Relative Coordinates</em>.  No more problems!</p>
+<p>To solve this, we can set each virtual Mesh&#8217;s <tt class="xref py py-attr docutils literal"><span class="pre">Mesh.global.position</span></tt> and <tt class="xref py py-attr docutils literal"><span class="pre">Mesh.global.rotation</span></tt> properties to match the position of the Arena!  When this happens, everything will be centered on the arena, and their <tt class="xref py py-attr docutils literal"><span class="pre">Mesh.local.position</span></tt> and <tt class="xref py py-attr docutils literal"><span class="pre">Mesh.local.rotatoin</span></tt> properties can be used to reposition them as normal.  Doing this thus moves your positioning from <em>Absolute Coordinates</em> to <em>Relative Coordinates</em>.  No more problems!</p>
 <p>Here&#8217;s how you can do that in real-time, allowing even a constantly-moving arena to stay updated:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Set virtual meshes to relative coordinate system.</span>
 <span class="k">for</span> <span class="n">mesh</span> <span class="ow">in</span> <span class="n">active_scene</span><span class="o">.</span><span class="n">meshes</span><span class="p">:</span>
@@ -277,10 +285,10 @@
 <div class="section" id="getting-rotation-invariant-tracking-coordinates">
 <h2>Getting Rotation-Invariant Tracking Coordinates<a class="headerlink" href="#getting-rotation-invariant-tracking-coordinates" title="Permalink to this headline">¶</a></h2>
 <p>When a new object is being tracked, the position of the object is fairly easy to ascertain, but its rotation is not; as a result, many trackers will define any new object as starting with zero rotation, and simply tracking from there.  But what if you want to track an object that you need to redefine?  Rescanning the object helps this problem, as does saving the original tracking data for future use, but if something is lost or changed then everything&#8211;arena body defining, arena scanning, and experiment positioning&#8211; would need to be redone.</p>
-<p>To help with this problem, ratCAVE tracker objects have a <code class="xref py py-attr docutils literal"><span class="pre">Tracker.rotation_pca_y</span></code> attribute that defines an object&#8217;s rotation in terms of the addition of the tracker server&#8217;s stated rotation and the angle between its default vector and the vector of maximum variance, along the direction of its highest variance.  This way, the rotation is totally defined by the marker configuration itself (how we tend to think of the object&#8217;s rotation) instead of its rotation when first defined.</p>
+<p>To help with this problem, ratCAVE tracker objects have a <tt class="xref py py-attr docutils literal"><span class="pre">Tracker.rotation_pca_y</span></tt> attribute that defines an object&#8217;s rotation in terms of the addition of the tracker server&#8217;s stated rotation and the angle between its default vector and the vector of maximum variance, along the direction of its highest variance.  This way, the rotation is totally defined by the marker configuration itself (how we tend to think of the object&#8217;s rotation) instead of its rotation when first defined.</p>
 <div class="admonition-todo admonition" id="index-0">
 <p class="first admonition-title">Todo</p>
-<p class="last">Need to better explain the <code class="xref py py-attr docutils literal"><span class="pre">Tracker.rotation_pca_y</span></code> concept in the future.</p>
+<p class="last">Need to better explain the <tt class="xref py py-attr docutils literal"><span class="pre">Tracker.rotation_pca_y</span></tt> concept in the future.</p>
 </div>
 <p>Further, the arena_scanner.py console script can automatically rotate the arena vertices so that these two rotations match.  So, when using files generated by this scanner, the rotation_pca_y information must be used instead of the rotation data:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">arena_tracked</span> <span class="o">=</span> <span class="n">tracker</span><span class="o">.</span><span class="n">rigid_bodies</span><span class="p">[</span><span class="s">&#39;Arena&#39;</span><span class="p">]</span>
@@ -350,7 +358,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ratcave.graphics.html" class="btn btn-neutral float-right" title="ratcave.graphics package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ratcave.html" class="btn btn-neutral float-right" title="ratcave package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="tutorial2.html" class="btn btn-neutral" title="Tutorial 2: Animating a Scene with Multiple Meshes, and using Multiple Scenes" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

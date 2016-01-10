@@ -31,7 +31,8 @@
 
   
     <link rel="top" title="ratCAVE 0.5.0 documentation" href="index.html"/>
-        <link rel="prev" title="ratcave.graphics package" href="ratcave.graphics.html"/> 
+        <link rel="up" title="ratcave package" href="ratcave.html"/>
+        <link rel="prev" title="ratcave package" href="ratcave.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -105,30 +106,20 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ratcave.graphics.html">ratcave.graphics package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.graphics.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.camera">ratcave.graphics.camera module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.logger">ratcave.graphics.logger module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.mesh">ratcave.graphics.mesh module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.mixins">ratcave.graphics.mixins module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.resources">ratcave.graphics.resources module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.scene">ratcave.graphics.scene module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.shader">ratcave.graphics.shader module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.utils">ratcave.graphics.utils module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.wavefront">ratcave.graphics.wavefront module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics.window">ratcave.graphics.window module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.graphics.html#module-ratcave.graphics">Module contents</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="ratcave.html">ratcave package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="ratcave.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="">ratcave.utils package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-ratcave.utils.eulerangles">ratcave.utils.eulerangles module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-ratcave.utils.gl">ratcave.utils.gl module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-ratcave.utils.orienting">ratcave.utils.orienting module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-ratcave.utils.script_utils">ratcave.utils.script_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-ratcave.utils.timers">ratcave.utils.timers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-ratcave.utils">Module contents</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">ratcave.utils package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-ratcave.utils.eulerangles">ratcave.utils.eulerangles module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-ratcave.utils.filters">ratcave.utils.filters module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-ratcave.utils.orienting">ratcave.utils.orienting module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-ratcave.utils.plotting">ratcave.utils.plotting module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-ratcave.utils.script_utils">ratcave.utils.script_utils module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-ratcave.utils.timers">ratcave.utils.timers module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-ratcave.utils">Module contents</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -154,6 +145,8 @@
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="ratcave.html">ratcave package</a> &raquo;</li>
       
     <li>ratcave.utils package</li>
       <li class="wy-breadcrumbs-aside">
@@ -187,28 +180,28 @@ Reference</em> (2006) by James Diebel. A cached PDF link last found here:</p>
 <p><a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.110.5134">http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.110.5134</a></p>
 <p>Euler&#8217;s rotation theorem tells us that any rotation in 3D can be
 described by 3 angles.  Let&#8217;s call the 3 angles the <em>Euler angle vector</em>
-and call the angles in the vector <span class="math">alpha</span>, <span class="math">beta</span> and
-<span class="math">gamma</span>.  The vector is [ <span class="math">alpha</span>,
-<span class="math">beta</span>. <span class="math">gamma</span> ] and, in this description, the order of the
+and call the angles in the vector <img class="math" src="_images/math/1c7982e9bed52596de46d839a5334f537de1c35d.png" alt="alpha"/>, <img class="math" src="_images/math/c832b84fa234327012d6c33ce14cbe4a808f9f21.png" alt="beta"/> and
+<img class="math" src="_images/math/7066674857707ec868f9a3c43f98733aafc1a141.png" alt="gamma"/>.  The vector is [ <img class="math" src="_images/math/1c7982e9bed52596de46d839a5334f537de1c35d.png" alt="alpha"/>,
+<img class="math" src="_images/math/c832b84fa234327012d6c33ce14cbe4a808f9f21.png" alt="beta"/>. <img class="math" src="_images/math/7066674857707ec868f9a3c43f98733aafc1a141.png" alt="gamma"/> ] and, in this description, the order of the
 parameters specifies the order in which the rotations occur (so the
-rotation corresponding to <span class="math">alpha</span> is applied first).</p>
+rotation corresponding to <img class="math" src="_images/math/1c7982e9bed52596de46d839a5334f537de1c35d.png" alt="alpha"/> is applied first).</p>
 <p>In order to specify the meaning of an <em>Euler angle vector</em> we need to
 specify the axes around which each of the rotations corresponding to
-<span class="math">alpha</span>, <span class="math">beta</span> and <span class="math">gamma</span> will occur.</p>
-<p>There are therefore three axes for the rotations <span class="math">alpha</span>,
-<span class="math">beta</span> and <span class="math">gamma</span>; let&#8217;s call them <span class="math">i</span> <span class="math">j</span>,
-<span class="math">k</span>.</p>
-<p>Let us express the rotation <span class="math">alpha</span> around axis <cite>i</cite> as a 3 by 3
-rotation matrix <cite>A</cite>.  Similarly <span class="math">beta</span> around <cite>j</cite> becomes 3 x 3
-matrix <cite>B</cite> and <span class="math">gamma</span> around <cite>k</cite> becomes matrix <cite>G</cite>.  Then the
-whole rotation expressed by the Euler angle vector [ <span class="math">alpha</span>,
-<span class="math">beta</span>. <span class="math">gamma</span> ], <cite>R</cite> is given by:</p>
+<img class="math" src="_images/math/1c7982e9bed52596de46d839a5334f537de1c35d.png" alt="alpha"/>, <img class="math" src="_images/math/c832b84fa234327012d6c33ce14cbe4a808f9f21.png" alt="beta"/> and <img class="math" src="_images/math/7066674857707ec868f9a3c43f98733aafc1a141.png" alt="gamma"/> will occur.</p>
+<p>There are therefore three axes for the rotations <img class="math" src="_images/math/1c7982e9bed52596de46d839a5334f537de1c35d.png" alt="alpha"/>,
+<img class="math" src="_images/math/c832b84fa234327012d6c33ce14cbe4a808f9f21.png" alt="beta"/> and <img class="math" src="_images/math/7066674857707ec868f9a3c43f98733aafc1a141.png" alt="gamma"/>; let&#8217;s call them <img class="math" src="_images/math/a581f053bbfa5115f42c13094857cdd12a37ec49.png" alt="i"/> <img class="math" src="_images/math/d32c78b759903e3f4bd4fd2ce0b86358f7500c5d.png" alt="j"/>,
+<img class="math" src="_images/math/e9203da50e1059455123460d4e716c9c7f440cc3.png" alt="k"/>.</p>
+<p>Let us express the rotation <img class="math" src="_images/math/1c7982e9bed52596de46d839a5334f537de1c35d.png" alt="alpha"/> around axis <cite>i</cite> as a 3 by 3
+rotation matrix <cite>A</cite>.  Similarly <img class="math" src="_images/math/c832b84fa234327012d6c33ce14cbe4a808f9f21.png" alt="beta"/> around <cite>j</cite> becomes 3 x 3
+matrix <cite>B</cite> and <img class="math" src="_images/math/7066674857707ec868f9a3c43f98733aafc1a141.png" alt="gamma"/> around <cite>k</cite> becomes matrix <cite>G</cite>.  Then the
+whole rotation expressed by the Euler angle vector [ <img class="math" src="_images/math/1c7982e9bed52596de46d839a5334f537de1c35d.png" alt="alpha"/>,
+<img class="math" src="_images/math/c832b84fa234327012d6c33ce14cbe4a808f9f21.png" alt="beta"/>. <img class="math" src="_images/math/7066674857707ec868f9a3c43f98733aafc1a141.png" alt="gamma"/> ], <cite>R</cite> is given by:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>See <a class="reference external" href="http://mathworld.wolfram.com/EulerAngles.html">http://mathworld.wolfram.com/EulerAngles.html</a></p>
-<p>The order <span class="math">G B A</span> expresses the fact that the rotations are
-performed in the order of the vector (<span class="math">alpha</span> around axis <cite>i</cite> =
+<p>The order <img class="math" src="_images/math/c9c2a67a3b507ab36a1eac3d19db6355055bc88f.png" alt="G B A"/> expresses the fact that the rotations are
+performed in the order of the vector (<img class="math" src="_images/math/1c7982e9bed52596de46d839a5334f537de1c35d.png" alt="alpha"/> around axis <cite>i</cite> =
 <cite>A</cite> first).</p>
 <p>To convert a given Euler angle vector to a meaningful rotation, and a
 rotation matrix, we need to define:</p>
@@ -226,24 +219,24 @@ vectors move within the axis frame (extrinsic)</li>
 <p>We are using the following conventions:</p>
 <ul class="simple">
 <li>axes <cite>i</cite>, <cite>j</cite>, <cite>k</cite> are the <cite>z</cite>, <cite>y</cite>, and <cite>x</cite> axes respectively.  Thus
-an Euler angle vector [ <span class="math">alpha</span>, <span class="math">beta</span>. <span class="math">gamma</span> ]
-in our convention implies a <span class="math">alpha</span> radian rotation around the
-<cite>z</cite> axis, followed by a <span class="math">beta</span> rotation around the <cite>y</cite> axis,
-followed by a <span class="math">gamma</span> rotation around the <cite>x</cite> axis.</li>
+an Euler angle vector [ <img class="math" src="_images/math/1c7982e9bed52596de46d839a5334f537de1c35d.png" alt="alpha"/>, <img class="math" src="_images/math/c832b84fa234327012d6c33ce14cbe4a808f9f21.png" alt="beta"/>. <img class="math" src="_images/math/7066674857707ec868f9a3c43f98733aafc1a141.png" alt="gamma"/> ]
+in our convention implies a <img class="math" src="_images/math/1c7982e9bed52596de46d839a5334f537de1c35d.png" alt="alpha"/> radian rotation around the
+<cite>z</cite> axis, followed by a <img class="math" src="_images/math/c832b84fa234327012d6c33ce14cbe4a808f9f21.png" alt="beta"/> rotation around the <cite>y</cite> axis,
+followed by a <img class="math" src="_images/math/7066674857707ec868f9a3c43f98733aafc1a141.png" alt="gamma"/> rotation around the <cite>x</cite> axis.</li>
 <li>the rotation matrix applies on the left, to column vectors on the
 right, so if <cite>R</cite> is the rotation matrix, and <cite>v</cite> is a 3 x N matrix
 with N column vectors, the transformed vector set <cite>vdash</cite> is given by
-<code class="docutils literal"><span class="pre">vdash</span> <span class="pre">=</span> <span class="pre">np.dot(R,</span> <span class="pre">v)</span></code>.</li>
+<tt class="docutils literal"><span class="pre">vdash</span> <span class="pre">=</span> <span class="pre">np.dot(R,</span> <span class="pre">v)</span></tt>.</li>
 <li>extrinsic rotations - the axes are fixed, and do not move with the
 rotations.</li>
 <li>a right-handed coordinate system</li>
 </ul>
-<p>The convention of rotation around <code class="docutils literal"><span class="pre">z</span></code>, followed by rotation around
-<code class="docutils literal"><span class="pre">y</span></code>, followed by rotation around <code class="docutils literal"><span class="pre">x</span></code>, is known (confusingly) as
+<p>The convention of rotation around <tt class="docutils literal"><span class="pre">z</span></tt>, followed by rotation around
+<tt class="docutils literal"><span class="pre">y</span></tt>, followed by rotation around <tt class="docutils literal"><span class="pre">x</span></tt>, is known (confusingly) as
 &#8220;xyz&#8221;, pitch-roll-yaw, Cardan angles, or Tait-Bryan angles.</p>
 <dl class="function">
 <dt id="ratcave.utils.eulerangles.angle_axis2euler">
-<code class="descclassname">ratcave.utils.eulerangles.</code><code class="descname">angle_axis2euler</code><span class="sig-paren">(</span><em>theta</em>, <em>vector</em>, <em>is_normalized=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.utils.eulerangles.angle_axis2euler" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">ratcave.utils.eulerangles.</tt><tt class="descname">angle_axis2euler</tt><big>(</big><em>theta</em>, <em>vector</em>, <em>is_normalized=False</em><big>)</big><a class="headerlink" href="#ratcave.utils.eulerangles.angle_axis2euler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert angle, axis pair to Euler angles</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -275,14 +268,14 @@ False</li>
 </div>
 <p class="rubric">Notes</p>
 <p>It&#8217;s possible to reduce the amount of calculation a little, by
-combining parts of the <code class="docutils literal"><span class="pre">angle_axis2mat</span></code> and <code class="docutils literal"><span class="pre">mat2euler</span></code>
+combining parts of the <tt class="docutils literal"><span class="pre">angle_axis2mat</span></tt> and <tt class="docutils literal"><span class="pre">mat2euler</span></tt>
 functions, but the reduction in computation is small, and the code
 repetition is large.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="ratcave.utils.eulerangles.euler2angle_axis">
-<code class="descclassname">ratcave.utils.eulerangles.</code><code class="descname">euler2angle_axis</code><span class="sig-paren">(</span><em>z=0</em>, <em>y=0</em>, <em>x=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.utils.eulerangles.euler2angle_axis" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">ratcave.utils.eulerangles.</tt><tt class="descname">euler2angle_axis</tt><big>(</big><em>z=0</em>, <em>y=0</em>, <em>x=0</em><big>)</big><a class="headerlink" href="#ratcave.utils.eulerangles.euler2angle_axis" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return angle, axis corresponding to these Euler angles</p>
 <p>Uses the z, then y, then x convention above</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -317,7 +310,7 @@ repetition is large.</p>
 
 <dl class="function">
 <dt id="ratcave.utils.eulerangles.euler2mat">
-<code class="descclassname">ratcave.utils.eulerangles.</code><code class="descname">euler2mat</code><span class="sig-paren">(</span><em>z=0</em>, <em>y=0</em>, <em>x=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.utils.eulerangles.euler2mat" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">ratcave.utils.eulerangles.</tt><tt class="descname">euler2mat</tt><big>(</big><em>z=0</em>, <em>y=0</em>, <em>x=0</em><big>)</big><a class="headerlink" href="#ratcave.utils.eulerangles.euler2mat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return matrix for rotations around z, y and x axes</p>
 <p>Uses the z, then y, then x convention above</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -395,7 +388,7 @@ looking along the axis of rotation from positive to negative.</p>
 
 <dl class="function">
 <dt id="ratcave.utils.eulerangles.euler2quat">
-<code class="descclassname">ratcave.utils.eulerangles.</code><code class="descname">euler2quat</code><span class="sig-paren">(</span><em>z=0</em>, <em>y=0</em>, <em>x=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.utils.eulerangles.euler2quat" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">ratcave.utils.eulerangles.</tt><tt class="descname">euler2quat</tt><big>(</big><em>z=0</em>, <em>y=0</em>, <em>x=0</em><big>)</big><a class="headerlink" href="#ratcave.utils.eulerangles.euler2quat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return quaternion corresponding to these Euler angles</p>
 <p>Uses the z, then y, then x convention above</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -424,7 +417,7 @@ looking along the axis of rotation from positive to negative.</p>
 about arbitrary axis:
 <a class="reference external" href="http://mathworld.wolfram.com/EulerParameters.html">http://mathworld.wolfram.com/EulerParameters.html</a></li>
 <li>Generated formulae from 1.) for quaternions corresponding to
-theta radians rotations about <code class="docutils literal"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></code> axes</li>
+theta radians rotations about <tt class="docutils literal"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></tt> axes</li>
 <li>Apply quaternion multiplication formula -
 <a class="reference external" href="http://en.wikipedia.org/wiki/Quaternions#Hamilton_product">http://en.wikipedia.org/wiki/Quaternions#Hamilton_product</a> - to
 formulae from 2.) to give formula for combined rotations.</li>
@@ -433,7 +426,7 @@ formulae from 2.) to give formula for combined rotations.</li>
 
 <dl class="function">
 <dt id="ratcave.utils.eulerangles.mat2euler">
-<code class="descclassname">ratcave.utils.eulerangles.</code><code class="descname">mat2euler</code><span class="sig-paren">(</span><em>M</em>, <em>cy_thresh=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.utils.eulerangles.mat2euler" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">ratcave.utils.eulerangles.</tt><tt class="descname">mat2euler</tt><big>(</big><em>M</em>, <em>cy_thresh=None</em><big>)</big><a class="headerlink" href="#ratcave.utils.eulerangles.mat2euler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Discover Euler angle vector from 3x3 matrix</p>
 <p>Uses the conventions above.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -477,7 +470,7 @@ x = atan2(-r23, r33)</div></blockquote>
 </pre></div>
 </div>
 <p>will be close to atan2(0, 0), and highly unstable.</p>
-<p>The <code class="docutils literal"><span class="pre">cy</span></code> fix for numerical instability below is from: <em>Graphics
+<p>The <tt class="docutils literal"><span class="pre">cy</span></tt> fix for numerical instability below is from: <em>Graphics
 Gems IV</em>, Paul Heckbert (editor), Academic Press, 1994, ISBN:
 0123361559.  Specifically it comes from EulerAngles.c by Ken
 Shoemake, and deals with the case where cos(y) is close to zero:</p>
@@ -488,7 +481,7 @@ without restrictions&#8221;.</p>
 
 <dl class="function">
 <dt id="ratcave.utils.eulerangles.quat2euler">
-<code class="descclassname">ratcave.utils.eulerangles.</code><code class="descname">quat2euler</code><span class="sig-paren">(</span><em>q</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.utils.eulerangles.quat2euler" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">ratcave.utils.eulerangles.</tt><tt class="descname">quat2euler</tt><big>(</big><em>q</em><big>)</big><a class="headerlink" href="#ratcave.utils.eulerangles.quat2euler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return Euler angles corresponding to quaternion <cite>q</cite></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -507,32 +500,117 @@ without restrictions&#8221;.</p>
 </table>
 <p class="rubric">Notes</p>
 <p>It&#8217;s possible to reduce the amount of calculation a little, by
-combining parts of the <code class="docutils literal"><span class="pre">quat2mat</span></code> and <code class="docutils literal"><span class="pre">mat2euler</span></code> functions, but
+combining parts of the <tt class="docutils literal"><span class="pre">quat2mat</span></tt> and <tt class="docutils literal"><span class="pre">mat2euler</span></tt> functions, but
 the reduction in computation is small, and the code repetition is
 large.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-ratcave.utils.filters">
-<span id="ratcave-utils-filters-module"></span><h2>ratcave.utils.filters module<a class="headerlink" href="#module-ratcave.utils.filters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-ratcave.utils.gl">
+<span id="ratcave-utils-gl-module"></span><h2>ratcave.utils.gl module<a class="headerlink" href="#module-ratcave.utils.gl" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="ratcave.utils.gl.FBO">
+<em class="property">class </em><tt class="descclassname">ratcave.utils.gl.</tt><tt class="descname">FBO</tt><a class="headerlink" href="#ratcave.utils.gl.FBO" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">tuple</span></tt></p>
+<p>FBO(id, texture, texture_slot, size)</p>
+<dl class="method">
+<dt id="ratcave.utils.gl.FBO.__getnewargs__">
+<tt class="descname">__getnewargs__</tt><big>(</big><big>)</big><a class="headerlink" href="#ratcave.utils.gl.FBO.__getnewargs__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return self as a plain tuple.  Used by copy and pickle.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.utils.gl.FBO.__getstate__">
+<tt class="descname">__getstate__</tt><big>(</big><big>)</big><a class="headerlink" href="#ratcave.utils.gl.FBO.__getstate__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exclude the OrderedDict from pickling</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ratcave.utils.gl.FBO.__repr__">
+<tt class="descname">__repr__</tt><big>(</big><big>)</big><a class="headerlink" href="#ratcave.utils.gl.FBO.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a nicely formatted representation string</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ratcave.utils.gl.FBO.id">
+<tt class="descname">id</tt><a class="headerlink" href="#ratcave.utils.gl.FBO.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ratcave.utils.gl.FBO.size">
+<tt class="descname">size</tt><a class="headerlink" href="#ratcave.utils.gl.FBO.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ratcave.utils.gl.FBO.texture">
+<tt class="descname">texture</tt><a class="headerlink" href="#ratcave.utils.gl.FBO.texture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ratcave.utils.gl.FBO.texture_slot">
+<tt class="descname">texture_slot</tt><a class="headerlink" href="#ratcave.utils.gl.FBO.texture_slot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="function">
-<dt id="ratcave.utils.filters.hist_mask">
-<code class="descclassname">ratcave.utils.filters.</code><code class="descname">hist_mask</code><span class="sig-paren">(</span><em>data</em>, <em>threshold=0.95</em>, <em>keep='lower'</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.utils.filters.hist_mask" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns boolean mask of values below a frequency percentage threshold (0-1).</p>
+<dt id="ratcave.utils.gl.create_fbo">
+<tt class="descclassname">ratcave.utils.gl.</tt><tt class="descname">create_fbo</tt><big>(</big><em>texture_type</em>, <em>width</em>, <em>height</em>, <em>texture_slot=0</em>, <em>color=True</em>, <em>depth=True</em>, <em>grayscale=False</em><big>)</big><a class="headerlink" href="#ratcave.utils.gl.create_fbo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ratcave.utils.gl.create_opengl_object">
+<tt class="descclassname">ratcave.utils.gl.</tt><tt class="descname">create_opengl_object</tt><big>(</big><em>gl_gen_function</em>, <em>n=1</em><big>)</big><a class="headerlink" href="#ratcave.utils.gl.create_opengl_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns int pointing to an OpenGL texture</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ratcave.utils.gl.create_vao">
+<tt class="descclassname">ratcave.utils.gl.</tt><tt class="descname">create_vao</tt><big>(</big><em>vertices</em>, <em>normals</em>, <em>texture_uvs</em><big>)</big><a class="headerlink" href="#ratcave.utils.gl.create_vao" title="Permalink to this definition">¶</a></dt>
+<dd><p>Puts mesh vertex data and puts it into an OpenGL Vertex Array Object.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>-data</strong> (<em>1D array</em>) &#8211; </li>
-<li><strong>-threshold</strong> (<em>float</em>) &#8211; 0-1</li>
-<li><strong>-keep</strong> (<em>str</em>) &#8211; lower, greater, middle. If middle, threshold is ignored,
-and a single cluster is searched out.</li>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>vertices</strong> (<em>Nx3 NumPy Array</em>) &#8211; 3D vertex positions</li>
+<li><strong>normals</strong> (<em>Nx3 NumPy Array</em>) &#8211; 3D normal directions, one for each vertex</li>
+<li><strong>texture_uvs</strong> (<em>Nx2 NumPy Array</em>) &#8211; 2D texture UV coordinates, one for each vertex.</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">vao</p>
 </td>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="class">
+<dt id="ratcave.utils.gl.render_to_fbo">
+<em class="property">class </em><tt class="descclassname">ratcave.utils.gl.</tt><tt class="descname">render_to_fbo</tt><big>(</big><em>window</em>, <em>fbo</em><big>)</big><a class="headerlink" href="#ratcave.utils.gl.render_to_fbo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>A context manager that sets the framebuffer target and resizes the viewport before and after the draw commands.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ratcave.utils.gl.setpriority">
+<tt class="descclassname">ratcave.utils.gl.</tt><tt class="descname">setpriority</tt><big>(</big><em>pid=None</em>, <em>priority=1</em><big>)</big><a class="headerlink" href="#ratcave.utils.gl.setpriority" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set The Priority of a Windows Process.  Priority is a value between 0-5 where
+2 is normal priority.  Default sets the priority of the current
+python process but can take any valid process ID.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ratcave.utils.gl.vec">
+<tt class="descclassname">ratcave.utils.gl.</tt><tt class="descname">vec</tt><big>(</big><em>floatlist</em>, <em>newtype='float'</em><big>)</big><a class="headerlink" href="#ratcave.utils.gl.vec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes GLfloat or GLuint vector containing float or uint args.
+By default, newtype is &#8216;float&#8217;, but can be set to &#8216;int&#8217; to make
+uint list.</p>
 </dd></dl>
 
 </div>
@@ -540,39 +618,8 @@ and a single cluster is searched out.</li>
 <span id="ratcave-utils-orienting-module"></span><h2>ratcave.utils.orienting module<a class="headerlink" href="#module-ratcave.utils.orienting" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="ratcave.utils.orienting.rotate_to_var">
-<code class="descclassname">ratcave.utils.orienting.</code><code class="descname">rotate_to_var</code><span class="sig-paren">(</span><em>markers</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.utils.orienting.rotate_to_var" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">ratcave.utils.orienting.</tt><tt class="descname">rotate_to_var</tt><big>(</big><em>markers</em><big>)</big><a class="headerlink" href="#ratcave.utils.orienting.rotate_to_var" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns degrees to rotate about y axis so greatest marker variance points in +X direction</p>
-</dd></dl>
-
-</div>
-<div class="section" id="module-ratcave.utils.plotting">
-<span id="ratcave-utils-plotting-module"></span><h2>ratcave.utils.plotting module<a class="headerlink" href="#module-ratcave.utils.plotting" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="ratcave.utils.plotting.plot_3d">
-<code class="descclassname">ratcave.utils.plotting.</code><code class="descname">plot_3d</code><span class="sig-paren">(</span><em>array3d</em>, <em>title=''</em>, <em>ax=None</em>, <em>line=False</em>, <em>color=''</em>, <em>square_axis=False</em>, <em>show=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.utils.plotting.plot_3d" title="Permalink to this definition">¶</a></dt>
-<dd><p>Make 3D scatterplot that plots the x, y, and z columns in a dataframe. Returns figure.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>-array3d</strong> (<em>Nx3 Numpy Array</em>) &#8211; data to plot.</li>
-<li><strong>-ax</strong> (<em>PyPlot Axis Object=None</em>) &#8211; Axis object to use.</li>
-<li><strong>-line</strong> (<em>bool=True</em>) &#8211; Whether to plot with lines instead of just points</li>
-<li><strong>-color</strong> (<em>str=&#8217;&#8216;</em>) &#8211; the color to set.</li>
-<li><strong>-square_axis</strong> (<em>bool=False</em>) &#8211; Whether to square the axes to fit the data.</li>
-<li><strong>-show</strong> (<em>bool=False</em>) &#8211; Whether to immediately show the figure.  This is a blocking operation.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>-ax</strong> &#8211; The Axis the data is plotted on.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">PyPlot Axis Object</p>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 </div>
@@ -580,35 +627,29 @@ and a single cluster is searched out.</li>
 <span id="ratcave-utils-script-utils-module"></span><h2>ratcave.utils.script_utils module<a class="headerlink" href="#module-ratcave.utils.script_utils" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="ratcave.utils.script_utils.correct_orientation_motivepy">
-<code class="descclassname">ratcave.utils.script_utils.</code><code class="descname">correct_orientation_motivepy</code><span class="sig-paren">(</span><em>rb</em>, <em>n_attempts=3</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.utils.script_utils.correct_orientation_motivepy" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">ratcave.utils.script_utils.</tt><tt class="descname">correct_orientation_motivepy</tt><big>(</big><em>rb</em>, <em>n_attempts=3</em><big>)</big><a class="headerlink" href="#ratcave.utils.script_utils.correct_orientation_motivepy" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="ratcave.utils.script_utils.correct_orientation_natnet">
-<code class="descclassname">ratcave.utils.script_utils.</code><code class="descname">correct_orientation_natnet</code><span class="sig-paren">(</span><em>rb</em>, <em>n_attempts=3</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.utils.script_utils.correct_orientation_natnet" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">ratcave.utils.script_utils.</tt><tt class="descname">correct_orientation_natnet</tt><big>(</big><em>rb</em>, <em>n_attempts=3</em><big>)</big><a class="headerlink" href="#ratcave.utils.script_utils.correct_orientation_natnet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assumes the orientation is reset already (need MotivePy to do it automatically) to account for between-session arena shifts</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="ratcave.utils.script_utils.get_arena_from">
-<code class="descclassname">ratcave.utils.script_utils.</code><code class="descname">get_arena_from</code><span class="sig-paren">(</span><em>file_name='/home/nickdg/.local/share/ratCAVE/arena.obj'</em>, <em>cubemap=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.utils.script_utils.get_arena_from" title="Permalink to this definition">¶</a></dt>
-<dd><p>Just returns the arena mesh from a .obj file.</p>
-</dd></dl>
-
-<dl class="function">
 <dt id="ratcave.utils.script_utils.motive_camera_vislight_configure">
-<code class="descclassname">ratcave.utils.script_utils.</code><code class="descname">motive_camera_vislight_configure</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.utils.script_utils.motive_camera_vislight_configure" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">ratcave.utils.script_utils.</tt><tt class="descname">motive_camera_vislight_configure</tt><big>(</big><big>)</big><a class="headerlink" href="#ratcave.utils.script_utils.motive_camera_vislight_configure" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="ratcave.utils.script_utils.update_world_position_motivepy">
-<code class="descclassname">ratcave.utils.script_utils.</code><code class="descname">update_world_position_motivepy</code><span class="sig-paren">(</span><em>meshes</em>, <em>arena_rb</em>, <em>additional_rot_y_rotation</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.utils.script_utils.update_world_position_motivepy" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">ratcave.utils.script_utils.</tt><tt class="descname">update_world_position_motivepy</tt><big>(</big><em>meshes</em>, <em>arena_rb</em>, <em>additional_rot_y_rotation</em><big>)</big><a class="headerlink" href="#ratcave.utils.script_utils.update_world_position_motivepy" title="Permalink to this definition">¶</a></dt>
 <dd><p># Update the positions of everything, based on the MotivePy data of the arena rigid body</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="ratcave.utils.script_utils.update_world_position_natnet">
-<code class="descclassname">ratcave.utils.script_utils.</code><code class="descname">update_world_position_natnet</code><span class="sig-paren">(</span><em>meshes</em>, <em>arena_rb</em>, <em>additional_rot_y_rotation</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.utils.script_utils.update_world_position_natnet" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">ratcave.utils.script_utils.</tt><tt class="descname">update_world_position_natnet</tt><big>(</big><em>meshes</em>, <em>arena_rb</em>, <em>additional_rot_y_rotation</em><big>)</big><a class="headerlink" href="#ratcave.utils.script_utils.update_world_position_natnet" title="Permalink to this definition">¶</a></dt>
 <dd><p># Update the positions of everything, based on the MotivePy data of the arena rigid body</p>
 </dd></dl>
 
@@ -617,14 +658,14 @@ and a single cluster is searched out.</li>
 <span id="ratcave-utils-timers-module"></span><h2>ratcave.utils.timers module<a class="headerlink" href="#module-ratcave.utils.timers" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="ratcave.utils.timers.countdown_timer">
-<code class="descclassname">ratcave.utils.timers.</code><code class="descname">countdown_timer</code><span class="sig-paren">(</span><em>total_secs</em>, <em>stop_iteration=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.utils.timers.countdown_timer" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">ratcave.utils.timers.</tt><tt class="descname">countdown_timer</tt><big>(</big><em>total_secs</em>, <em>stop_iteration=False</em><big>)</big><a class="headerlink" href="#ratcave.utils.timers.countdown_timer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates an iterator that returns the time remaining from total_time (secs). Returns 0.0 when time is up, unless
 stop_iteration is True.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="ratcave.utils.timers.dt_timer">
-<code class="descclassname">ratcave.utils.timers.</code><code class="descname">dt_timer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ratcave.utils.timers.dt_timer" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">ratcave.utils.timers.</tt><tt class="descname">dt_timer</tt><big>(</big><big>)</big><a class="headerlink" href="#ratcave.utils.timers.dt_timer" title="Permalink to this definition">¶</a></dt>
 <dd><p>A Generator that returns the time since last called. Never returns StopIteration.</p>
 </dd></dl>
 
@@ -641,7 +682,7 @@ stop_iteration is True.</p>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="ratcave.graphics.html" class="btn btn-neutral" title="ratcave.graphics package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ratcave.html" class="btn btn-neutral" title="ratcave package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

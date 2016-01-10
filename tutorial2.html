@@ -107,16 +107,20 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ratcave.graphics.html">ratcave.graphics package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ratcave.utils.html">ratcave.utils package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.eulerangles">ratcave.utils.eulerangles module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.filters">ratcave.utils.filters module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.orienting">ratcave.utils.orienting module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.plotting">ratcave.utils.plotting module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.script_utils">ratcave.utils.script_utils module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.timers">ratcave.utils.timers module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils">Module contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ratcave.html">ratcave package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ratcave.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ratcave.utils.html">ratcave.utils package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.eulerangles">ratcave.utils.eulerangles module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.gl">ratcave.utils.gl module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.orienting">ratcave.utils.orienting module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.script_utils">ratcave.utils.script_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils.timers">ratcave.utils.timers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ratcave.utils.html#module-ratcave.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -160,7 +164,7 @@
             
   <div class="section" id="tutorial-2-animating-a-scene-with-multiple-meshes-and-using-multiple-scenes">
 <h1>Tutorial 2: Animating a Scene with Multiple Meshes, and using Multiple Scenes<a class="headerlink" href="#tutorial-2-animating-a-scene-with-multiple-meshes-and-using-multiple-scenes" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial will build on the previous one by adding some more interesting elements.  We&#8217;ll allow the user to switch between two different <a class="reference internal" href="ratcave.graphics.html#ratcave.graphics.Scene" title="ratcave.graphics.Scene"><code class="xref py py-class docutils literal"><span class="pre">Scene</span></code></a> objects by pressing a key, and have multiple meshes in each scene that move.</p>
+<p>This tutorial will build on the previous one by adding some more interesting elements.  We&#8217;ll allow the user to switch between two different <a class="reference internal" href="ratcave.html#ratcave.Scene" title="ratcave.Scene"><tt class="xref py py-class docutils literal"><span class="pre">Scene</span></tt></a> objects by pressing a key, and have multiple meshes in each scene that move.</p>
 <div class="section" id="scenes-hold-lists-of-meshes">
 <h2>Scenes Hold Lists of Meshes<a class="headerlink" href="#scenes-hold-lists-of-meshes" title="Permalink to this headline">¶</a></h2>
 <p>Let&#8217;s insert a couple Meshes from our obj_reader WavefrontReader object into a couple different scenes.  We&#8217;ll even create a second Monkey object and display it as a wireframe.:</p>
@@ -171,8 +175,8 @@ torus = obj_reader.get_mesh(&quot;Torus&quot;, centered=True, position=(-1, 0, -
 wire_monkey = obj_reader.get_mesh(&quot;Monkey&quot;, centered=True, drawstyle=&#39;lines&#39;, position=(0, 0, -2)
 
 # Create Scenes with Meshes.
-scene1 = graphics.Scene([monkey, cube])
-scene2 = graphics.Scene([wire_monkey, torus])
+scene1 = rc.Scene([monkey, cube])
+scene2 = rc.Scene([wire_monkey, torus])
 </pre></div>
 </div>
 </div>
@@ -182,7 +186,7 @@ scene2 = graphics.Scene([wire_monkey, torus])
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">psychopy</span> <span class="kn">import</span> <span class="n">events</span>
 <span class="kn">import</span> <span class="nn">math</span>
 
-<span class="n">window</span> <span class="o">=</span> <span class="n">graphics</span><span class="o">.</span><span class="n">Window</span><span class="p">(</span><span class="n">Scene</span><span class="p">)</span>
+<span class="n">window</span> <span class="o">=</span> <span class="n">rc</span><span class="o">.</span><span class="n">Window</span><span class="p">(</span><span class="n">Scene</span><span class="p">)</span>
 
 <span class="n">theta</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -229,13 +233,13 @@ scene2 = graphics.Scene([wire_monkey, torus])
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>Here&#8217;s the full code from Tutorial 2:</p>
-<div class="highlight-python"><div class="highlight"><pre>from ratcave import graphics
+<div class="highlight-python"><div class="highlight"><pre>import ratcave as rc
 from psychopy import events
 import math
 
 # Insert filename into WavefrontReader.
-obj_filename = graphics.resources.obj_primitives
-obj_reader = graphics.WavefrontReader(obj_filename)
+obj_filename = rc.resources.obj_primitives
+obj_reader = rc.WavefrontReader(obj_filename)
 
 # Create Meshes from WavefrontReader
 monkey = obj_reader.get_mesh(&quot;Monkey&quot;, centered=True, position=(0, 0, -1.5))
@@ -244,9 +248,9 @@ torus = obj_reader.get_mesh(&quot;Torus&quot;, centered=True, position=(-1, 0, -
 wire_monkey = obj_reader.get_mesh(&quot;Monkey&quot;, centered=True, drawstyle=&#39;lines&#39;, position=(0, 0, -2)
 
 # Create Scenes with Meshes.
-scene1 = graphics.Scene([monkey, cube])
-scene2 = graphics.Scene([wire_monkey, torus])
-window = graphics.Window(Scene)
+scene1 = rc.Scene([monkey, cube])
+scene2 = rc.Scene([wire_monkey, torus])
+window = rc.Window(Scene)
 
 # Main Loop
 theta = 0
