@@ -23,7 +23,7 @@ void main()
 sphere_fragshader = """
 #version 330
 
-//uniform float sides;
+uniform int sides;
 uniform float phi;
 uniform sampler2D TextureMap;
 
@@ -32,8 +32,6 @@ out vec4 color;
 
 const float pi = 3.14159265;
 
-const float sides = 10;
-const float i = 1.;
 //const float phi = i * 2 * pi / sides;
 
 void main()
@@ -83,11 +81,12 @@ scene = rc.Scene(meshes=[angelmonkey], bgColor=(0., 1., 0.))
 
 # Build Secdon Scene (fullscreen quad overlay)
 fbo = rc.FBO(rc.Texture())
+sides = 32
 
 quad = rc.resources.gen_fullscreen_quad()
 quad.texture = fbo.texture
-quad.uniforms.append(rc.shader.Uniform('sides', 32))
-quad.uniforms.append(rc.shader.Uniform('phi', 0.))
+quad.uniforms.append(rc.shader.Uniform('sides', sides))
+quad.uniforms.append(rc.shader.Uniform('phi', 0.9))
 
 sceneOverlay = rc.Scene(meshes=[quad])
 
@@ -103,17 +102,20 @@ def update(dt):
 pyglet.clock.schedule_interval(update, 1./60)
 
 
-quad.uniforms.append(rc.shader.Uniform('phi', 0.9))
 @window.event
 def on_draw():
 	window.clear()
 	sceneOverlay.clear()
-	for camrot in [0., .63, 1.2, 3.]:
-		scene.camera.rot_y = camrot * 180. / math.pi 
+	for phi in [(x/float(sides)) * 2 * math.pi for x in range(sides)]:
+
+		grad = phi * 180. / math.pi 
+		scene.camera.rot_z = phi * 180. / math.pi 
 		with fbo:
 			scene.draw(autoclear=True)
-			quad.uniforms[-1].value[0] = camrot  # Phi
+			quad.uniforms[-1].value[0] = phi  # Phi
 		sceneOverlay.draw(shader=texShader, autoclear=False)
+		#import ipdb
+		#ipdb.set_trace()
 	
 
 
