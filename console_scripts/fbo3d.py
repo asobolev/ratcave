@@ -79,9 +79,15 @@ angelmonkey.add_children([monkey])
 scene = rc.Scene(meshes=[angelmonkey], bgColor=(0., 1., 0.))
 
 
+
 # Build Secdon Scene (fullscreen quad overlay)
 fbo = rc.FBO(rc.Texture())
 sides = 32
+
+height = 80.
+width = float(360)/sides
+scene.camera.fov_y = height
+scene.camera.aspect = math.tan(math.radians(width) * 0.5) / math.tan(math.radians(height) * 0.5)
 
 quad = rc.resources.gen_fullscreen_quad()
 quad.texture = fbo.texture
@@ -109,7 +115,7 @@ def on_draw():
 	for phi in [(x/float(sides)) * 2 * math.pi for x in range(sides)]:
 
 		grad = phi * 180. / math.pi 
-		scene.camera.rot_z = phi * 180. / math.pi 
+		scene.camera.rot_y = -phi * 180. / math.pi
 		with fbo:
 			scene.draw(autoclear=True)
 			quad.uniforms[-1].value[0] = phi  # Phi
