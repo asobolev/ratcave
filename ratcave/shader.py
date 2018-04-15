@@ -2,9 +2,9 @@ import abc
 from pyglet import gl
 from ctypes import byref, create_string_buffer, c_char, c_char_p, c_int, c_float, c_double, cast, pointer, POINTER
 import numpy as np
-from .utils import gl as ugl
+from .utils import BindingContextMixin, BindNoTargetMixin
 try:
-    from UserDict import IterableUserDict# Python 2
+    from UserDict import IterableUserDict  # Python 2
 except ImportError:
     from collections import UserDict as IterableUserDict  # Python 3
 from six import iteritems
@@ -23,35 +23,53 @@ class UniformCollection(IterableUserDict, object):
     def __init__(self, **kwargs):
         super(UniformCollection, self).__init__()
         for key, value in iteritems(kwargs):
-            self[key] = value
+            self.data[key] = value
+
+
 
     def __setitem__(self, key, value):
+
+        # name = key.encode('ascii') if hasattr(key, 'encode') else key
+        if key in self.data:
+            self.data[key][:] = value
+            return
+
         if isinstance(value, bool):
             value = int(value)
         if isinstance(value, np.ndarray):
-            if value.dtype != np.float32:
+            if 'f' in value.dtype.str and value.dtype != np.float32:
                 raise TypeError("Matrix Uniform Arrays must be 32-bit floats for rendering to work properly.")
             uniform = value  # Don't copy the data if it's already a numpy array
         else:
             uniform = np.array([value]) if not hasattr(value, '__iter__') else np.array(value)
+
         uniform = uniform.view(UniformArray)  # Cast as a UniformArray for 'loc' to be set as an attribute later.
-        name = key.encode('ascii')
-        self.data[name] = uniform
+        self.data[key] = uniform
+
+    def __delitem__(self, key):
+        del self.data[key]
 
     def send(self):
 
         for name, array in iteritems(self):
 
+            shader_id = c_int(0)
+            gl.glGetIntegerv(gl.GL_CURRENT_PROGRAM, byref(shader_id))
+            if shader_id.value == 0:
+                raise UnboundLocalError("""Shader not bound to OpenGL context--uniform cannot be sent.
+                ------------ Tip -------------
+                with ratcave.default_shader:
+                    mesh.draw()
+                ------------------------------
+                """)
+
             # Attach a shader location value to the array, for quick memory lookup. (gl calls are expensive, for some reason)
             try:
-                loc = array.loc
-            except AttributeError:
-                shader_id = c_int(0)
-                gl.glGetIntegerv(gl.GL_CURRENT_PROGRAM, byref(shader_id))
-                if shader_id.value == 0:
-                    raise UnboundLocalError("Shader not bound to OpenGL context--uniform cannot be sent.")
-                array.loc = gl.glGetUniformLocation(shader_id.value, name)
-                loc = array.loc
+                loc, shader_id_for_array = array.loc
+                if shader_id.value != shader_id_for_array:
+                    raise Exception('Uniform location bound to a different shader')
+            except (AttributeError, Exception) as e:
+                array.loc = (gl.glGetUniformLocation(shader_id.value, name.encode('ascii')), shader_id.value)
 
             if array.ndim == 2:  # Assuming a 4x4 float32 matrix (common for graphics operations)
                 try:
@@ -59,12 +77,15 @@ class UniformCollection(IterableUserDict, object):
                 except AttributeError:
                     array.pointer = array.ctypes.data_as(POINTER(c_float * 16)).contents
                     pointer = array.pointer
-                gl.glUniformMatrix4fv(loc, 1, True, pointer)
+                gl.glUniformMatrix4fv(array.loc[0], 1, True, pointer)
 
             else:
                 sendfun = self._sendfuns[array.dtype.kind][len(array) - 1]  # Find correct glUniform function
-                sendfun(loc, *array)
-
+                sendfun(array.loc[0], *array)
+    #
+    # def update(self, other_dict):
+    #     for key, value in iteritems(other_dict):
+    #         self[key] = value
 
 class HasUniforms(object):
     """Interface for drawing."""
@@ -74,12 +95,16 @@ class HasUniforms(object):
         super(HasUniforms, self).__init__(**kwargs)
         self.uniforms = UniformCollection(**uniforms) if uniforms else UniformCollection()
 
+    @abc.abstractmethod
+    def reset_uniforms(self):
+        pass
 
-class Shader(ugl.BindingContextMixin, ugl.BindNoTargetMixin):
+
+class Shader(BindingContextMixin, BindNoTargetMixin):
 
     bindfun = gl.glUseProgram
 
-    def __init__(self, vert='', frag='', geom=''):
+    def __init__(self, vert='', frag='', geom='', lazy=False):
         """
         GLSL Shader program object for rendering in OpenGL.
 
@@ -89,16 +114,39 @@ class Shader(ugl.BindingContextMixin, ugl.BindNoTargetMixin):
           - geom (str): The geometry shader program
         """
         self.id = gl.glCreateProgram()  # create the program handle
- 
+        self.is_linked = False
+        self.is_compiled = False
+        self.vert = vert
+        self.frag = frag
+        self.geom = geom
+        self.lazy = lazy
+
+        if not self.lazy:
+            self.compile()
+
+
+    def compile(self):
         # create the vertex, fragment, and geometry shaders
-        self.createShader(vert, gl.GL_VERTEX_SHADER)
-        self.createShader(frag, gl.GL_FRAGMENT_SHADER)
-        if geom:
-            self.createShader(geom, gl.GL_GEOMETRY_SHADER_EXT)
- 
-        # attempt to link the program
-        self.link()
- 
+        self.createShader(self.vert, gl.GL_VERTEX_SHADER)
+        self.createShader(self.frag, gl.GL_FRAGMENT_SHADER)
+        if self.geom:
+            self.createShader(self.geom, gl.GL_GEOMETRY_SHADER_EXT)
+        self.is_compiled = True
+
+    def bind(self):
+        if not self.is_linked:
+            if not self.is_compiled:
+                self.compile()
+            self.link()
+        super(self.__class__, self).bind()
+
+    @classmethod
+    def from_file(cls, vert, frag, **kwargs):
+        vert_program = open(vert).read()
+        frag_program = open(frag).read()
+        return cls(vert=vert_program, frag=frag_program, **kwargs)
+
+
     def createShader(self, strings, shadertype):
  
         # create the shader handle
@@ -137,3 +185,5 @@ class Shader(ugl.BindingContextMixin, ugl.BindNoTargetMixin):
             buffer = create_string_buffer(link_status.value)  # create a buffer for the log
             gl.glGetProgramInfoLog(self.id, link_status, None, buffer)  # retrieve the log text
             print(buffer.value)  # print the log to the console
+
+        self.is_linked = True

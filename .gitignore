@@ -7,3 +7,5 @@ build/*
 dist/*
 ratcave.egg-info/*
 .idea
+.cache
+*.egg-info

@@ -1,31 +1,32 @@
 
-from .utils import gl as ugl
-from . import texture as tex
+from .utils import BindingContextMixin, create_opengl_object, get_viewport, Viewport
+from .texture import DepthTexture, RenderBuffer
 
 import pyglet.gl as gl
 
 
-class FBO(ugl.GlGenMixin, ugl.BindingContextMixin):
+class FBO(BindingContextMixin):
 
-    genfun = gl.glGenFramebuffersEXT
     target = gl.GL_FRAMEBUFFER_EXT
 
     def __init__(self, texture, *args, **kwargs):
         """A Framebuffer object, which when bound redirects draws to its texture.  This is useful for deferred rendering."""
 
         super(FBO, self).__init__(*args, **kwargs)
-        self._old_viewport_size = (gl.GLint * 4)()
+        self.id = create_opengl_object(gl.glGenFramebuffersEXT)
+        self._old_viewport = get_viewport()
         self.texture = texture
-        self.renderbuffer = tex.RenderBuffer(texture.width, texture.height) if not isinstance(texture, tex.DepthTexture) else None
+        self.renderbuffer = RenderBuffer(texture.width, texture.height) if not isinstance(texture, DepthTexture) else None
 
-        with self: #, self.texture:  # TODO: Figure out whether texture should also be bound here.
+        with self:
 
             # Attach the textures to the FBO
-            for texture in [self.texture, self.renderbuffer] if self.renderbuffer else [self.texture]:
-                texture.attach_to_fbo()
+            self.texture.attach_to_fbo()
+            if self.renderbuffer:
+                self.renderbuffer.attach_to_fbo()
 
             # Set Draw and Read locations for the FBO (currently, just turn it off if not doing any color stuff)
-            if isinstance(texture, tex.DepthTexture):
+            if isinstance(texture, DepthTexture):
                 gl.glDrawBuffer(gl.GL_NONE)  # No color in this buffer
                 gl.glReadBuffer(gl.GL_NONE)
 
@@ -40,7 +41,7 @@ class FBO(ugl.GlGenMixin, ugl.BindingContextMixin):
         gl.glBindTexture(gl.GL_TEXTURE_2D, 0)
 
         # Store current viewport size for later
-        gl.glGetIntegerv(gl.GL_VIEWPORT, self._old_viewport_size)
+        self._old_viewport = get_viewport()
 
         # Bind the FBO, and change the viewport to fit its texture.
         gl.glBindFramebufferEXT(gl.GL_FRAMEBUFFER_EXT, self.id)  # Rendering off-screen
@@ -53,8 +54,7 @@ class FBO(ugl.GlGenMixin, ugl.BindingContextMixin):
             with self.texture:
                 self.texture.generate_mipmap()
 
-
         gl.glBindFramebufferEXT(gl.GL_FRAMEBUFFER_EXT, 0)
 
         # Restore the old viewport size
-        gl.glViewport(*self._old_viewport_size)
+        gl.glViewport(*self._old_viewport)

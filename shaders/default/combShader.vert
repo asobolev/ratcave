@@ -1,12 +1,19 @@
-#version 330
+#version 150
+#extension GL_ARB_explicit_attrib_location : enable
 
 layout(location = 0) in vec4 vertexPosition;
 layout(location = 1) in vec3 normalPosition;
 layout(location = 2) in vec2 uvTexturePosition;
 
 uniform vec3 light_position, playerPos;
-uniform mat4 projection_matrix, view_matrix, model_matrix, normal_matrix;
-uniform mat4 shadow_projection_matrix, shadow_view_matrix;
+uniform mat4 model_matrix, normal_matrix;
+uniform mat4 view_matrix = mat4(1.0);
+uniform mat4 projection_matrix = mat4(vec4(1.38564062,  0.,  0.,  0.),
+                                      vec4(0.,  1.73205078,  0.,  0.),
+                                      vec4(0., 0., -1.01680672, -1. ),
+                                      vec4(0., 0., -0.20168068, 0.)
+                                      );
+uniform mat4 light_projection_matrix, light_view_matrix;
 
 out float lightAmount;
 out vec2 texCoord;
@@ -34,11 +41,12 @@ void main()
 	eyeVec = vVertex.xyz - playerPos;
   
   	//Calculate Shadow Coordinate
-  	ShadowCoord = (texture_bias * shadow_projection_matrix * shadow_view_matrix * vVertex);
+  	ShadowCoord = (texture_bias * light_projection_matrix * light_view_matrix * vVertex);
 
     // Calculate Diffusion Intensity, and Subtract it out (only used for cubemaps)
     float lambertTerm0 = dot(normal, normalize(light_position - vVertex.xyz));
-    lightAmount = 1. - (diffuse_weight * lambertTerm0);  // Cancel out diffusion effects
+//    lightAmount = 1.; // - (diffuse_weight * lambertTerm0);  // Cancel out diffusion effects
+//    lightAmount = - (diffuse_weight * lambertTerm0);  // Cancel out diffusion effects
 
     return;
   }

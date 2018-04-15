@@ -1,24 +1,26 @@
-__author__ = 'ratcave'
-
 from setuptools import setup, find_packages, Extension
-import numpy
+try:
+    import numpy
+except ImportError:
+    raise ImportError("numpy not found.  Please install numpy (e.g. 'pip install numpy') before installing ratcave.")
 
 
 setup(name='ratcave',
-      version='0.6',
+      version='0.7.1rc2',
       url='https://www.github.com/neuroneuro15/ratcave',
-      description='3D Graphics Engine for CAVE VR setups',
+      description='3D Graphics Engine for Scientific, Video Game, and VR Applications.',
       author='Nicholas A. Del Grosso',
       author_email='delgrosso.nick@gmail.com',
       license='MIT',
       packages=find_packages(exclude=['docs']),
       include_package_data=True,
       package_data={'': ['../assets/*.'+el for el in ['png', 'obj', 'mtl']] +
-                        ['../shaders/*'+el for el in ['vert', 'frag']]
+                        ['../shaders/*/*'+el for el in ['vert', 'frag']]
                     },
-      install_requires=['pyglet', 'numpy', 'wavefront_reader'],
+      install_requires=['pyglet', 'numpy', 'wavefront_reader', 'future', 'six'],
       ext_modules=[Extension('_transformations', sources=['third_party/transformations.c'], include_dirs=[numpy.get_include()])],
-      test_suite='tests',
+      setup_requires=['numpy', 'pytest-runner'],
+      tests_require = ['pytest'],
       keywords='graphics 3D pyglet psychopy python virtual reality VR',
       classifiers=[
           "Topic :: Multimedia :: Graphics :: 3D Rendering",

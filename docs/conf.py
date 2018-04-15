@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# ratCAVE documentation build configuration file, created by
+# ratcave documentation build configuration file, created by
 # sphinx-quickstart on Wed Oct  5 16:47:55 2016.
 #
 # This file is execfile()d with the current directory set to its
@@ -22,7 +22,10 @@ class Mock(MagicMock):
     def __getattr__(cls, name):
             return Mock()
 
-MOCK_MODULES = ['argparse', 'numpy', 'pyglet', 'pyglet.gl', '_transformations']
+    def __len__(self):
+        return 3  # Hacky patch
+
+MOCK_MODULES = ['argparse', 'numpy', 'pyglet', 'pyglet.gl', '_transformations', 'ratcave.resources']
 sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -270,7 +273,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'ratcave', 'ratCAVE Documentation',
+    (master_doc, 'ratcave', 'ratcave Documentation',
      [author], 1)
 ]
 

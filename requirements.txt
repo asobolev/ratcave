@@ -3,3 +3,9 @@ sphinxcontrib-napoleon
 numpy
 pyglet
 mock
+six
+future
+pytest
+wavefront_reader
+sphinx
+sphinx_rtd_theme

@@ -1,6 +1,9 @@
-
+import os
 from os import path
+from glob import glob
 from .shader import Shader
+from .camera import Camera
+from .light import Light
 
 """
 Here are some sample obj files for prototyping your app!
@@ -23,13 +26,15 @@ obj_grid3D = path.join(resource_path, 'grid3D.obj')
 # Shaders
 shader_path = path.join(path.split(__file__)[0], '..', 'shaders')
 
-# General, Normal Shader
-genShader = Shader(open(path.join(shader_path, 'combShader.vert')).read(),
-                   open(path.join(shader_path, 'combShader.frag')).read())
+for dirname in os.listdir(shader_path):
+    if path.isdir(path.join(shader_path, dirname)):
+        vertname = glob(path.join(shader_path, dirname, '*.vert'))[0]
+        fragname = glob(path.join(shader_path, dirname, '*.frag'))[0]
+        globals()[dirname + '_shader'] = Shader.from_file(vert=path.join(shader_path, vertname),
+                                                          frag=path.join(shader_path, fragname),
+                                                          lazy=True)
 
-shadowShader = Shader(open(path.join(shader_path, 'shadowShader.vert')).read(),
-                      open(path.join(shader_path, 'shadowShader.frag')).read())
 
-deferredShader = Shader(open(path.join(shader_path, 'basicDeferred.vert')).read(),
-                  open(path.join(shader_path, 'basicDeferred.frag')).read())
 
+default_camera = Camera()
+default_light = Light()

@@ -1,6 +1,6 @@
 from . import gl
-from . import coordinates
-from .observers import Observable, Observer, IterObservable, AutoRegisterObserver
-from .scenegraph import SceneGraph
 from . import vertices
-from .mixins import NameLabelMixin
+from .gl import vec, create_opengl_object, POINTS, TRIANGLES, LINE_LOOP, LINES, get_viewport, Viewport, clear_color
+from .mixins import NameLabelMixin, BindTargetMixin, BindNoTargetMixin, BindingContextMixin
+from .observers import Observable, Observer, IterObservable, AutoRegisterObserver
+

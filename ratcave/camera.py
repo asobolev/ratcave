@@ -1,11 +1,10 @@
 import abc
 import numpy as np
-from .physical import Physical, PhysicalGraph
+from .physical import PhysicalGraph
 import pyglet.gl as gl
 from collections import namedtuple
-import warnings
 from .shader import HasUniforms
-from .utils import mixins
+from .utils import NameLabelMixin, get_viewport
 
 Viewport = namedtuple('Viewport', 'x y width height')
 
@@ -13,12 +12,22 @@ Viewport = namedtuple('Viewport', 'x y width height')
 class ProjectionBase(object):
     __metaclass__ = abc.ABCMeta
 
-    def __init__(self, z_near=0.1, z_far=4.5, aspect=1.25, **kwargs):
+    def __init__(self, z_near=0.1, z_far=12., **kwargs):
         super(ProjectionBase, self).__init__(**kwargs)
-        self.projection_matrix = np.identity(4, dtype=np.float32)
+        self._projection_matrix = np.identity(4, dtype=np.float32)
+        if z_near >= z_far or z_near <= 0. or z_far <= 0.:
+            raise ValueError("z_near must be less than z_far, and both must be positive.")
         self._z_near = z_near
         self._z_far = z_far
-        self.aspect = aspect
+        self._update_projection_matrix()
+
+    @property
+    def projection_matrix(self):
+        return self._projection_matrix.view()
+
+    @projection_matrix.setter
+    def projection_matrix(self, value):
+        self._projection_matrix[:] = value
 
     @property
     def z_near(self):
@@ -54,14 +63,7 @@ class ProjectionBase(object):
 
     @property
     def viewport(self):
-        viewport_array = (gl.GLint * 4)()
-        gl.glGetIntegerv(gl.GL_VIEWPORT, viewport_array)
-        return Viewport(*viewport_array)
-
-    def match_aspect_to_viewport(self):
-        """Updates Camera.aspect to match the viewport's aspect ratio."""
-        viewport = self.viewport
-        self.aspect = float(viewport.width) / viewport.height
+        return get_viewport()
 
 
 ScreenEdges = namedtuple('ScreenEdges', 'left right bottom top')
@@ -76,10 +78,9 @@ class OrthoProjection(ProjectionBase):
         origin: 'center', 'corner',
         coords: 'relative', 'absolute'
         """
-        super(OrthoProjection, self).__init__(**kwargs)
         self._origin = origin
         self._coords = coords
-        self._update_projection_matrix()
+        super(OrthoProjection, self).__init__(**kwargs)
 
     @property
     def origin(self):
@@ -133,12 +134,26 @@ class OrthoProjection(ProjectionBase):
 
 class PerspectiveProjection(ProjectionBase):
 
-    def __init__(self, fov_y=60., x_shift=0., y_shift=0., **kwargs):
-        super(PerspectiveProjection, self).__init__(**kwargs)
+    def __init__(self, fov_y=60., aspect=1.25, x_shift=0., y_shift=0., **kwargs):
         self._fov_y = fov_y
         self._x_shift = x_shift
         self._y_shift = y_shift
+        self._aspect = aspect
+        super(PerspectiveProjection, self).__init__(**kwargs)
+
+    @property
+    def aspect(self):
+        return self._aspect
+
+    @aspect.setter
+    def aspect(self, value):
+        self._aspect = value
         self._update_projection_matrix()
+
+    def match_aspect_to_viewport(self):
+        """Updates Camera.aspect to match the viewport's aspect ratio."""
+        viewport = self.viewport
+        self.aspect = float(viewport.width) / viewport.height
 
     @property
     def fov_y(self):
@@ -192,7 +207,7 @@ class PerspectiveProjection(ProjectionBase):
 
 
 
-class Camera(PhysicalGraph, HasUniforms, mixins.NameLabelMixin, mixins.ObservableVisibleMixin):
+class Camera(PhysicalGraph, HasUniforms, NameLabelMixin):
 
     def __init__(self, projection=None, orientation0=(0, 0, -1), **kwargs):
         kwargs['orientation0'] = orientation0
@@ -200,9 +215,15 @@ class Camera(PhysicalGraph, HasUniforms, mixins.NameLabelMixin, mixins.Observabl
         self.projection = PerspectiveProjection() if not projection else projection
         self.reset_uniforms()
 
-    def update(self):
-        super(Camera, self).update()
-        self.projection.update()
+    def __repr__(self):
+        return "<Camera(name='{self.name}', position_rel={self.position}, position_glob={self.position_global}, rotation={self.rotation})".format(self=self)
+
+    def __enter__(self):
+        self.uniforms.send()
+        return self
+
+    def __exit__(self, *args):
+        pass
 
     @property
     def projection(self):
@@ -212,8 +233,11 @@ class Camera(PhysicalGraph, HasUniforms, mixins.NameLabelMixin, mixins.Observabl
     def projection(self, value):
         if not issubclass(value.__class__, ProjectionBase):
             raise TypeError("Camera.projection must be a Projection.")
-        self._projection = value
-        self.reset_uniforms()
+        if not hasattr(self, '_projection'):
+            self._projection = value
+            self.reset_uniforms()
+        else:
+            raise NotImplementedError("Setting a new projection on an existing Camera is not currently working.  Please create a new Camera.")
 
     def reset_uniforms(self):
         self.uniforms['projection_matrix'] = self.projection_matrix.view()
@@ -223,6 +247,5 @@ class Camera(PhysicalGraph, HasUniforms, mixins.NameLabelMixin, mixins.Observabl
 
     @property
     def projection_matrix(self):
-        return self.projection.projection_matrix
-
+        return self.projection.projection_matrix.view()
 

@@ -5,10 +5,10 @@ Tutorial 3: Custom GLSL Shaders, Sending Data to the Graphics Card
 
 To get the most out of our graphics, many newer graphics engines use programs running on the graphics card called
 "shaders" to specify how objects should be shown on-screen.  While teaching GLSL shaders is beyond the scope of this tutorial,
-and ratCAVE allows you to completely skip writing shaders at all by supplying a few useful ones, you'll likely want to
+and ratcave allows you to completely skip writing shaders at all by supplying a few useful ones, you'll likely want to
 use a shader of your own.
 
-In this tutorial, you'll learn how to use ratCAVE to:
+In this tutorial, you'll learn how to use ratcave to:
 
   - Compile a :py:class:`.Shader` object and use it in the :py:func:`.Scene.draw()` function.
   - Send data to the shader from Python as a :py:class:`.Uniform` variable.
@@ -19,7 +19,7 @@ In this tutorial, you'll learn how to use ratCAVE to:
 Initial Script
 --------------
 
-Since the previous tutorials have already covered a lot of ratCAVE methods, let's just start with the following script::
+Since the previous tutorials have already covered a lot of ratcave methods, let's just start with the following script::
 
     import pyglet
     import ratcave as rc
@@ -35,14 +35,15 @@ Since the previous tutorials have already covered a lot of ratCAVE methods, let'
 
     # Constantly-Running mesh rotation, for fun
     def update(dt):
-        torus.rot_y += 20. * dt
+        torus.rotation.y += 20. * dt
     pyglet.clock.schedule(update)
 
 
     # Draw Function
     @window.event
     def on_draw():
-        scene.draw()
+        with rc.default_shader:
+            scene.draw()
 
     # Pyglet's event loop run function
     pyglet.app.run()
@@ -54,7 +55,7 @@ This code should display a rotating torus on the window.
 Creating a Custom GLSL Shader
 -----------------------------
 
-Now, one thing ratCAVE does automatically is use it's built-in **genShader** :py:class:`.Shader`, if none is specified.  This is
+Now, one thing ratcave does automatically is use it's built-in **genShader** :py:class:`.Shader`, if none is specified.  This is
 to make it easier to get started.  Let's replace it with our own custom shader program, which simply positions the mesh in 3D space.
 
 Shader programs come in two types.  **Vertex Shaders** tell the graphics card where a vertex will appear on your screen.
@@ -126,6 +127,8 @@ Here is what the code should look like now::
     }
     """
 
+    shader = rc.Shader(vert=vert_shader, frag=frag_shader)
+
     # Create window and OpenGL context (always must come first!)
     window = pyglet.window.Window()
 
@@ -140,12 +143,12 @@ Here is what the code should look like now::
         torus.rot_y += 20. * dt
     pyglet.clock.schedule(update)
 
-    shader = rc.Shader(vert=vert_shader, frag=frag_shader)
 
     # Draw Function
     @window.event
     def on_draw():
-        scene.draw(shader=shader)
+        with shader:
+            scene.draw()
 
     # Pyglet's event loop run function
     pyglet.app.run()
@@ -168,7 +171,7 @@ In the python code, modify the diffuse key in the :py:func:`Mesh.uniforms` attri
 
     torus.uniforms['diffuse'] = [.2, .8, .8]
 
-.. note:: All ratCAVE objects come with some default uniforms, to make setting up easier and to make naming schemas more consistent.  This shouldn't restrict you, though--new uniforms are automatically initialized when you add them dictionary-style, like **torus.uniforms['my_uniform'] = 3.0**!
+.. note:: All ratcave objects come with some default uniforms, to make setting up easier and to make naming schemas more consistent.  This shouldn't restrict you, though--new uniforms are automatically initialized when you add them dictionary-style, like **torus.uniforms['my_uniform'] = 3.0**!
 
 If you run the code now, you should now see a cyan rotating torus.  Let's make it a little more dynamic, shall we? ::
 
@@ -193,28 +196,30 @@ Here's the updated code::
     import math
 
     vert_shader = """
-    #version 330
+     #version 330
 
-    layout(location = 0) in vec3 vertexPosition;
-    uniform mat4 projection_matrix, view_matrix, model_matrix;
-    out vec4 vVertex;
+     layout(location = 0) in vec3 vertexPosition;
+     uniform mat4 projection_matrix, view_matrix, model_matrix;
+     out vec4 vVertex;
 
-    void main()
-    {
-        vVertex = model_matrix * vec4(vertexPosition, 1.0);
-        gl_Position = projection_matrix * view_matrix * vVertex;
-    }
-    """
+     void main()
+     {
+         vVertex = model_matrix * vec4(vertexPosition, 1.0);
+         gl_Position = projection_matrix * view_matrix * vVertex;
+     }
+     """
 
     frag_shader = """
-    #version 330
-    out vec4 final_color;
-    uniform vec3 diffuse;
-    void main()
-    {
-        final_color = vec4(diffuse, 1.);
-    }
-    """
+     #version 330
+     out vec4 final_color;
+     uniform vec3 diffuse;
+     void main()
+     {
+         final_color = vec4(diffuse, 1.);
+     }
+     """
+
+    shader = rc.Shader(vert=vert_shader, frag=frag_shader)
 
     # Create window and OpenGL context (always must come first!)
     window = pyglet.window.Window()
@@ -222,25 +227,27 @@ Here's the updated code::
     # Load Meshes and put into a Scene
     obj_reader = rc.WavefrontReader(rc.resources.obj_primitives)
     torus = obj_reader.get_mesh('Torus', position=(0, 0, -2))
-    torus.uniforms['diffuse'] = [.2, .8, .8]
+    torus.uniforms['diffuse'] = [.5, .0, .8]
 
     scene = rc.Scene(meshes=[torus])
 
     # Constantly-Running mesh rotation, for fun
     def update(dt):
-        torus.rot_y += 20. * dt
+        torus.rotation.y += 20. * dt
     pyglet.clock.schedule(update)
 
-    shader = rc.Shader(vert=vert_shader, frag=frag_shader)
 
     def update_color(dt):
-        torus.uniforms['diffuse'][0] = 0.5 * math.sin(time.clock()) + 1
+        torus.uniforms['diffuse'][0] = 0.5 * math.sin(time.clock() * 10) + .5
     pyglet.clock.schedule(update_color)
+
 
     # Draw Function
     @window.event
     def on_draw():
-        scene.draw(shader=shader)
+        with shader:
+            scene.draw()
+
 
     # Pyglet's event loop run function
     pyglet.app.run()
